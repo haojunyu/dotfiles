@@ -1,0 +1,16 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+"README.md" = ""
+dotfiles = ""
+dotter = ""
+"dotter.arm" = ""
+"dotter.exe" = ""
+
+[default.variables]
+
+[settings]
+default_target_type = "automatic"
