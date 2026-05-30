@@ -9,8 +9,15 @@ dotfiles = ""
 dotter = ""
 "dotter.arm" = ""
 "dotter.exe" = ""
+ssh_config = { target = "~/.ssh/config", type = "template" }
 
 [default.variables]
+GFW_HOST = ""
+GFW_PORT = ""
+ALI_HOST = ""
+ALI_PORT = ""
+TX_HOST = ""
+TX_PORT = ""
 
 [settings]
 default_target_type = "automatic"

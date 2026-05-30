@@ -1,0 +1,44 @@
+# SSH Config — managed by Dotter, do not edit directly
+# This file is templated; variables come from .dotter/global.toml and .dotter/local.toml
+
+# === Global defaults ===
+Host *
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    IdentitiesOnly yes
+    AddKeysToAgent yes
+    ForwardAgent no
+
+# === Per-machine sections ===
+# The hostname variable is defined in local.toml to identify this machine.
+# Use it to conditionally include sections, or template remote host aliases.
+
+{{#if (and GFW_HOST GFW_PORT)}}
+Host gfw
+    HostName {{ GFW_HOST }}
+    Port {{ GFW_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+Host bwg
+    HostName {{ GFW_HOST }}
+    Port {{ GFW_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+{{/if}}
+
+{{#if (and ALI_HOST ALI_PORT)}}
+Host ali
+    HostName {{ ALI_HOST }}
+    Port {{ ALI_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+{{/if}}
+
+
+{{#if (and TX_HOST TX_PORT)}}
+Host tx
+    HostName {{ TX_HOST }}
+    Port {{ TX_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+{{/if}}
