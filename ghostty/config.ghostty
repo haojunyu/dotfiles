@@ -1,4 +1,5 @@
-
+## theme
+theme = Catppuccin Frappe
 
 ## keybind
 keybind = performable:ctrl+c=copy_to_clipboard
