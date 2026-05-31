@@ -1,9 +1,6 @@
 [helpers]
 
-[default]
-depends = []
-
-[default.files]
+[shell.files]
 "README.md" = ""
 dotfiles = ""
 dotter = ""
@@ -14,7 +11,8 @@ gitconfig = { target = "~/.gitconfig", type = "template" }
 "cargo_config.toml" = { target = "~/.cargo/config.toml", type = "symbolic" }
 npmrc = { target = "~/.npmrc", type = "symbolic" }
 
-[default.variables]
+
+[shell.variables]
 GFW_HOST = ""
 GFW_PORT = ""
 ALI_HOST = ""
@@ -29,6 +27,14 @@ WS_HOST = ""
 WS_PORT = ""
 GIT_NAME = ""
 GIT_EMAIL = ""
+
+
+[fish]
+depends = ["shell"]
+
+[fish.files]
+"fish" = { target = "~/.config/fish", type = "symbolic" }
+
 
 [settings]
 default_target_type = "automatic"
