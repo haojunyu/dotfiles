@@ -10,6 +10,7 @@ dotter = ""
 "dotter.arm" = ""
 "dotter.exe" = ""
 ssh_config = { target = "~/.ssh/config", type = "template" }
+gitconfig = { target = "~/.gitconfig", type = "template" }
 
 [default.variables]
 GFW_HOST = ""
@@ -24,6 +25,8 @@ NAS_HOST = ""
 NAS_PORT = ""
 WS_HOST = ""
 WS_PORT = ""
+GIT_NAME = ""
+GIT_EMAIL = ""
 
 [settings]
 default_target_type = "automatic"

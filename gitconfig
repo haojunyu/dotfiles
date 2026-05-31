@@ -1,0 +1,44 @@
+{{#if (and GIT_NAME GIT_EMAIL)}}
+[user]
+    name = {{ GIT_NAME }}
+    email = {{ GIT_EMAIL }}
+
+[credential]
+    helper = store
+
+{{/if}}
+
+[core]
+[core]
+    {{#if (eq dotter.os "windows")}}
+    symlinks = true
+    autocrlf = true
+    {{else}}
+    autocrlf = input
+    {{/if}}
+    editor = vim
+    quotepath = false
+
+[color]
+    ui = auto
+
+[advice]
+    ignoredHook = false
+
+[help]
+    autocorrect = 20
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    lg = log --oneline --graph --decorate --all
+
+[push]
+    autoSetupRemote = true
+    default = simple
+
+[pull]
+    rebase = true
+
