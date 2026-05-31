@@ -11,6 +11,8 @@ dotter = ""
 "dotter.exe" = ""
 ssh_config = { target = "~/.ssh/config", type = "template" }
 gitconfig = { target = "~/.gitconfig", type = "template" }
+"cargo_config.toml" = { target = "~/.cargo/config.toml", type = "symbolic" }
+npmrc = { target = "~/.npmrc", type = "symbolic" }
 
 [default.variables]
 GFW_HOST = ""
