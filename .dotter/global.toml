@@ -10,7 +10,7 @@ ssh_config = { target = "~/.ssh/config", type = "template" }
 gitconfig = { target = "~/.gitconfig", type = "template" }
 "cargo_config.toml" = { target = "~/.cargo/config.toml", type = "symbolic" }
 npmrc = { target = "~/.npmrc", type = "symbolic" }
-
+"config_starship.toml" = { target = "~/.config/starship.toml", type = "symbolic" }
 
 [shell.variables]
 GFW_HOST = ""
@@ -34,6 +34,13 @@ depends = ["shell"]
 
 [fish.files]
 "fish" = { target = "~/.config/fish", type = "symbolic" }
+
+
+[ghostty]
+depends = ["shell"]
+
+[ghostty.files]
+"ghostty" = { target = "~/.config/ghostty", type = "symbolic" }
 
 
 [settings]
