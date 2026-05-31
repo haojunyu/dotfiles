@@ -1,6 +1,7 @@
 ## theme
 theme = Catppuccin Frappe
-#font-family = "PowerlineSymbols, DroidSansM Nerd Font"
+#font-family = "JetBrainsMono Nerd Font, DroidSansM Nerd Font"
+#font-size = 12
 
 ## keybind
 keybind = performable:ctrl+c=copy_to_clipboard
