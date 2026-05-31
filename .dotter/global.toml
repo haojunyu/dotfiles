@@ -18,6 +18,12 @@ ALI_HOST = ""
 ALI_PORT = ""
 TX_HOST = ""
 TX_PORT = ""
+RASP_HOST = ""
+RASP_PORT = ""
+NAS_HOST = ""
+NAS_PORT = ""
+WS_HOST = ""
+WS_PORT = ""
 
 [settings]
 default_target_type = "automatic"

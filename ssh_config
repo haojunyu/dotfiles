@@ -42,3 +42,46 @@ Host tx
     User hjy
     IdentityFile ~/.ssh/id_ed25519
 {{/if}}
+
+{{#if (and RASP_HOST RASP_PORT)}}
+Host rasp
+    HostName {{ RASP_HOST }}
+    Port {{ RASP_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+{{/if}}
+
+{{#if (and NAS_HOST NAS_PORT)}}
+Host nas
+    HostName {{ NAS_HOST }}
+    Port {{ NAS_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+{{/if}}
+
+{{#if (and WS_HOST WS_PORT)}}
+Host ws
+    HostName {{ WS_HOST }}
+    Port {{ WS_PORT }}
+    User hjy
+    IdentityFile ~/.ssh/id_ed25519
+    # 登陆后切换到特定目录
+    RemoteCommand cd /mnt/coder && exec fish --login
+    RequestTTY yes
+{{/if}}
+
+
+# 跳板机配置样例
+#Host jumper
+#    HostName jumper.example.com
+#    User user
+#    Port 58422
+#    IdentityFile ~/.ssh/id_rsa
+#Host jump_target
+#    HostName 172.17.132.120
+#    User user
+#    Port 22
+#    IdentityFile ~/.ssh/id_rsa
+#    ProxyJump jumper  # ProxyJump比ProxyCommand适用范围更广
+#    #ProxyCommand ssh user@jumper -W %h:%p 2>/dev/null
+#    LocalForward 5433 localhost:5432    # 本地5433映射到jump_target的5432
