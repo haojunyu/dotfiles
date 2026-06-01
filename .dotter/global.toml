@@ -11,6 +11,8 @@ gitconfig = { target = "~/.gitconfig", type = "template" }
 "cargo_config.toml" = { target = "~/.cargo/config.toml", type = "symbolic" }
 npmrc = { target = "~/.npmrc", type = "symbolic" }
 "config_starship.toml" = { target = "~/.config/starship.toml", type = "symbolic" }
+"config_yazi.toml" = { target = "~/.config/yazi/yazi.toml", type = "symbolic" }
+nvim = "~/.config/nvim"
 
 [shell.variables]
 GFW_HOST = ""

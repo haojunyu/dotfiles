@@ -1,0 +1,6 @@
+## refer: https://yazi-rs.github.io/docs/configuration/yazi
+[mgr]
+show_hidden = true
+
+sort_by = "mtime"     #mtime, size, natural
+sort_reverse = true

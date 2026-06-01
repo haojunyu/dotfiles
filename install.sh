@@ -69,7 +69,7 @@ CARGO_EOF
 # ── 3. Utils (TUI tools + git + system utils) ────────────────
 install_utils() {
     echo "==> [utils] Installing utility tools..."
-    sudo apt install -y git lazygit fzf fd-find ripgrep ffmpeg jq resvg imagemagick 
+    sudo apt install -y git lazygit fzf fd-find ripgrep ffmpeg jq resvg imagemagick neovim
 
     mkdir -p ~/.config/fish/completions
     fdfind --gen-completions fish > ~/.config/fish/completions/fd.fish 2>/dev/null || true
@@ -91,6 +91,9 @@ install_utils() {
     cargo install bat
     cargo install zoxide
     cargo install zellij
+
+    # 尝试用snap安装yazi
+    sudo snap install yazi --classic
 
     echo "    All cargo utils installed."
 }
