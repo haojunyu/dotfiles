@@ -19,7 +19,8 @@ require("lazy").setup({
         { import = "plugins" },
     },
     dev = {
-        path = vim.fn.expand("~/code"),
+        -- load sourcecode from local ~/coder/pluginname.
+        path = vim.fn.expand("~/coder"),
         fallback = true,
     },
     checker = {
