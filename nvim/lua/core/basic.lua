@@ -175,4 +175,17 @@ g.loaded_python3_provider = 0   -- 禁用 Python provider
 g.loaded_ruby_provider = 0  -- 禁用 Ruby provider
 g.loaded_netrw = 1      -- 禁用内置文件浏览器 netrw
 g.loaded_netrwPlugin = 1    -- 禁用 netrw 插件
+-- =====================
+-- 自动换行（仅文档类文件）
+-- =====================
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "text", "gitcommit", "help" },
+    callback = function()
+        vim.wo.wrap = true
+        vim.wo.linebreak = true
+        vim.wo.breakindent = true
+        vim.wo.showbreak = "↳  "
+    end,
+})
+
 g.editorconfig = true   -- 启用 EditorConfig 集成 (遵循项目 .editorconfig 配置)

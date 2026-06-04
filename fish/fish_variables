@@ -1,5 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export EDITOR:nvim
 SETUVAR --export RUSTUP_DIST_SERVER:https\x3a//mirrors\x2etuna\x2etsinghua\x2eedu\x2ecn/rustup
 SETUVAR --export RUSTUP_UPDATE_ROOT:https\x3a//mirrors\x2eustc\x2eedu\x2ecn/rust\x2dstatic/rustup
 SETUVAR --export UV_INDEX_URL:https\x3a//mirrors\x2ealiyun\x2ecom/pypi/simple

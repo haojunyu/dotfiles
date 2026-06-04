@@ -5,7 +5,7 @@ theme = Catppuccin Frappe
 
 ## keybind
 keybind = performable:ctrl+c=copy_to_clipboard
-keybind = ctrl+t=new_tab
+#keybind = ctrl+t=new_tab
 keybind = ctrl+v=paste_from_clipboard
 keybind = ctrl+d=new_split:right
 keybind = ctrl+shift+d=new_split:down
