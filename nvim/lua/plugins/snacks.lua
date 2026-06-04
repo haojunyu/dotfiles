@@ -35,6 +35,14 @@ return
                 },
                 style = "compact",
             },
+            outline = {
+                enabled = true,
+                -- 与 LspUI.nvim 的 outline 行为兼容
+            },
+            navic = {
+                enabled = true,
+                -- 面包屑导航，替代 nvim-navic
+            },
             picker = {
                 enabled = true,
                 -- 全局排除 Go 生成文件的配置
@@ -77,7 +85,7 @@ return
                 },
             },
             quickfile = { enabled = true },
-            rename = { enabled = false }, -- 使用 LspUI rename 替代
+            rename = { enabled = false }, -- 使用 vim.lsp.buf.rename 原生替代
             scope = { enabled = true }, -- 代码作用域检测
             scratch = { enabled = true },
             scroll = { enabled = false }, -- 平滑滚动动画影响性能,禁用
@@ -128,6 +136,15 @@ return
         },
 
         keys = {
+            -- ===== Outline =====
+            {
+                "<leader>ao",
+                function()
+                    Snacks.outline.toggle()
+                end,
+                desc = "Toggle outline",
+            },
+
             -- Notifications
             {
                 "<leader>sn",
