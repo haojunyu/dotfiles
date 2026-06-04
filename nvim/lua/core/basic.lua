@@ -176,10 +176,10 @@ g.loaded_ruby_provider = 0  -- 禁用 Ruby provider
 g.loaded_netrw = 1      -- 禁用内置文件浏览器 netrw
 g.loaded_netrwPlugin = 1    -- 禁用 netrw 插件
 -- =====================
--- 自动换行（仅文档类文件）
+-- 自动换行（仅 markdown）
 -- =====================
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "markdown", "text", "gitcommit", "help" },
+    pattern = { "markdown" },
     callback = function()
         vim.wo.wrap = true
         vim.wo.linebreak = true

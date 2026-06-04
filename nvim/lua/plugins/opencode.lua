@@ -3,6 +3,7 @@ return
 {
     {
         "sudo-tee/opencode.nvim",
+        enabled = false, -- 已停用，保留配置以备将来使用
         dev = true,
         event = "VeryLazy",
         dependencies = {

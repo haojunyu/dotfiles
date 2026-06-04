@@ -3,6 +3,7 @@ return
 {
     {
         "olimorris/codecompanion.nvim",
+        enabled = false, -- 已停用，保留配置以备将来使用
         version = "^19.0.0",
         cmd = {
             "CodeCompanion",

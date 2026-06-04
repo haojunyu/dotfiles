@@ -32,6 +32,7 @@ local languages = {
     "luap",
     "make",
     "markdown",
+    "markdown_inline",
     "meson",
     "ninja",
     "nix",
