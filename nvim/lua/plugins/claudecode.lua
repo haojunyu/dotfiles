@@ -45,6 +45,7 @@ return
             -- Session management
             { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume session", mode = { "n" } },
             { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue conversation", mode = { "n" } },
+            { "<leader>aD", "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "new session with bypass mode", mode = { "n" } },
             { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select model", mode = { "n" } },
 
             -- Context management
