@@ -136,6 +136,15 @@ return
                 end,
                 desc = "Notification History",
             },
+            -- Terminal
+            {
+                "<C-3>",
+                function()
+                    Snacks.terminal(nil, { win = { position = "bottom", height = 0.3 } })
+                end,
+                desc = "Toggle Bottom Terminal (30%)",
+                mode = {"n", "t"}
+            },
             -- ===== Picker: 快速查找 (Ctrl+p/f) =====
             {
                 "<leader>fG",

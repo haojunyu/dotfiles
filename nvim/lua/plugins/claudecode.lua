@@ -39,6 +39,7 @@ return
             { "<leader>a", nil, desc = "AI/Claude Code" },
 
             -- Window control
+            { "<C-2>", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude", mode = { "n", "t" } },
             { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude", mode = { "n" } },
             { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
 
