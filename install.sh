@@ -69,7 +69,7 @@ CARGO_EOF
 # ── 3. Utils (TUI tools + git + system utils) ────────────────
 install_utils() {
     echo "==> [utils] Installing utility tools..."
-    sudo apt install -y git lazygit fzf fd-find ripgrep ffmpeg jq resvg imagemagick libclang-dev
+    sudo apt install -y git lazygit fzf ffmpeg jq resvg imagemagick libclang-dev
 
     mkdir -p ~/.config/fish/completions
     fdfind --gen-completions fish > ~/.config/fish/completions/fd.fish 2>/dev/null || true
@@ -87,9 +87,15 @@ install_utils() {
     cargo install tlrc
     fish -c "set -Ux TLDR_LANGUAGE zh"
 
-    cargo install lsd
-    cargo install bat
-    cargo install zoxide
+    cargo install lsd               # ls
+    cargo install zoxide            # cd
+    cargo install bat               # cat
+    cargo install ripgrep           # grep  -> rg
+    cargo install fd-find           # find  -> fd
+    cargo install git-delta         # diff  -> delta
+    cargo install hyperfine         # time
+    cargo install dust-du           # du -> dust
+    cargo install sd                # sed
     cargo install zellij
     cargo install tree-sitter-cli
 

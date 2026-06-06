@@ -12,7 +12,7 @@ return
             { "<leader>tn", "<CMD>FloatermNew<CR>", mode = { "n", "t" }, desc = "floaterm new" },
             { "<leader>tj", "<CMD>FloatermPrev<CR>", mode = { "n", "t" }, desc = "floaterm prev" },
             { "<leader>tk", "<CMD>FloatermNext<CR>", mode = { "n", "t" }, desc = "floaterm next" },
-            { "<Esc>", "<CMD>FloatermToggle<CR>", mode = { "n", "t" }, desc = "floaterm toggel" },
+            { "<C-Esc>", "<CMD>FloatermToggle<CR>", mode = { "n", "t" }, desc = "floaterm toggel" },
             { "<leader>tw", "<CMD>FloatermKill<CR>", mode = { "n", "t" }, desc = "floaterm kill" },
         },
     },
