@@ -2,5 +2,6 @@
 [mgr]
 show_hidden = true
 
-sort_by = "mtime"     #mtime, size, natural
-sort_reverse = true
+sort_by = "alphabetical"  #alphabetical, mtime, size, natural
+sort_reverse = false
+linemode = "size_and_mtime"

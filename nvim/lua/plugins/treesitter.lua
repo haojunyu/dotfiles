@@ -24,6 +24,7 @@ local languages = {
     "html",
     "http",
     "ini",
+    "java",
     "javascript",
     "json",
     "json5",
