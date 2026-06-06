@@ -98,9 +98,7 @@
 | 插件 | 文件 | 说明 |
 |------|------|------|
 | [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | `gitsigns.lua` | Git 行内标注。在 signcolumn 显示增删改标记，当前行 blame 信息（显示作者/时间）。 |
-| [NeogitOrg/neogit](https://github.com/NeogitOrg/neogit) | `neogit.lua` | Magit 风格的 Git 操作界面。提供完整的 Git GUI（提交、rebase、stash、分支管理），tab 方式打开，集成 codediff 查看差异。 |
 | [pwntester/octo.nvim](https://github.com/pwntester/octo.nvim) | `octo.lua` | GitHub PR/Issue 管理。在 nvim 中浏览/创建/评论 PR 和 Issue，支持 PR review 流程。使用 snacks 作为选择器。 |
-| [esmuellert/codediff.nvim](https://github.com/esmuellert/codediff.nvim) | `codediff.lua` | 差异查看器。树形浏览文件变更，支持 diff 对比。与 Neogit 集成使用。 |
 | [folke/snacks.nvim](https://github.com/folke/snacks.nvim) — Git | `snacks.lua` | snacks 内置 Git 浏览、diff 查看、branch 切换等功能。 |
 | [chrishrb/gx.nvim](https://github.com/chrishrb/gx.nvim) | `gx.lua` | URL 浏览器。`gx` 打开光标下的 URL，自动识别 GitHub/GitLab 等托管平台并跳转到对应网页。替代 netrw 的 `gx`。 |
 
@@ -110,7 +108,7 @@
 |------|------|------|
 | [Mofiqul/vscode.nvim](https://github.com/Mofiqul/vscode.nvim) | `theme.lua` | VS Code 深色主题。支持 italic comments、inlay hints 斜体、链接下划线。`priority = 1000` 确保最先加载。 |
 | [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | `bufferline.lua` | 顶部 buffer 标签栏。显示文件名、修改状态、LSP 诊断图标。支持排序（按目录/扩展名）、数字快捷键跳转、Snacks 集成关闭 buffer。 |
-| [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | `lualine.lua` | 底部状态栏。显示模式、cwd、分支、文件名、Copilot 状态、位置。Winbar 显示文件路径 + navic 面包屑。DAP/CodeCompanion/Neogit 等特殊窗口有定制扩展。 |
+| [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | `lualine.lua` | 底部状态栏。显示模式、cwd、分支、文件名、Copilot 状态、位置。Winbar 显示文件路径 + navic 面包屑。DAP/CodeCompanion 等特殊窗口有定制扩展。 |
 | [SmiteshP/nvim-navic](https://github.com/SmiteshP/nvim-navic) | `lualine.lua` | LSP 面包屑导航。依赖 nvim-lspconfig，自动 attach 到支持 documentSymbol 的 LSP。在 lualine winbar 中显示当前位置（`>` 分隔）。 |
 | [j-hui/fidget.nvim](https://github.com/j-hui/fidget.nvim) | `fidget.lua` | LSP 进度指示器。右下角浮动显示 LSP 服务器启动/索引进度。集成 CodeCompanion 进度显示（Thinking... → Done）。 |
 | [MeanderingProgrammer/render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) | `render-markdown.lua` | Markdown 渲染。将 markdown 语法渲染为美化效果（标题、checkbox、callouts），支持 anti-conceal（光标所在行显示原始语法）。为 codecompanion/opencode_output buffer 定制样式。 |
@@ -150,7 +148,7 @@
 
 ## 插件统计
 
-- **活跃插件**：46 个（分布在 48 个插件文件中，含 1 个停用）
+- **活跃插件**：44 个（分布在 46 个插件文件中，含 1 个停用）
 - **已停用**：3 个（CodeCompanion、img-clip、opencode）
 - **核心依赖**：lazy.nvim（插件管理）、plenary.nvim（通用库）
 - **自研/本地插件**：ai-gitcommit.nvim、LspUI.nvim（dev 模式）、opencode.nvim（dev 模式）
@@ -164,7 +162,7 @@
 | `<leader>g` | 搜索替换（Grug-far） |
 | `<leader>d` | 调试（Debug）：断点、步进、REPL |
 | `<leader>a` | AI：Claude Code（`c/r/s`）、Pi Agent（`p`/`pc`/`pv`） |
-| `<leader>n` | Git（Neogit）、通知 |
+| `<leader>n` | 通知 |
 | `<leader>o` | GitHub（Octo）：PR、Issue |
 | `<leader>b` | Buffer：切换、关闭、排序 |
 | `<leader>w` | 窗口：切换分屏 |

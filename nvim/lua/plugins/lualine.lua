@@ -37,7 +37,6 @@ return
                 Outline = { icon = "", label = "Outline", color = colors.blue },
                 opencode = { icon = "", label = "OpenCode", color = colors.red },
                 opencode_output = { icon = "", label = "OpenCode Output", color = colors.orange },
-                NeogitStatus = { icon = "", label = "Neogit", color = colors.peach },
             }
 
             -- CodeCompanion 模型名称

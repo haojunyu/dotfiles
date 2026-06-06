@@ -15,6 +15,7 @@ return
             explorer = { enabled = false }, -- 如果使用 nvim-tree，设为 false
             git = { enabled = true },
             gitbrowse = { enabled = true },
+            lazygit = { enabled = true },
             indent = { enabled = true }, -- 使用 blink.indent 替代
             input = { enabled = true },
             notifier = {
@@ -143,6 +144,24 @@ return
                     Snacks.terminal(nil, { win = { position = "bottom", height = 0.3 } })
                 end,
                 desc = "Toggle Bottom Terminal (30%)",
+                mode = {"n", "t"}
+            },
+            -- LazyGit: snacks 集成（自动配色 + nvim-remote 编辑）
+            {
+                "<C-4>",
+                function()
+                    Snacks.lazygit()
+                end,
+                desc = "LazyGit (snacks)",
+                mode = {"n", "t"}
+            },
+            -- LazyGit: 终端方式（原始终端运行）
+            {
+                "<C-5>",
+                function()
+                    Snacks.terminal("lazygit", { win = { position = "top" , height = 0.99}, cwd = vim.fn.getcwd() })
+                end,
+                desc = "LazyGit (terminal)",
                 mode = {"n", "t"}
             },
             -- ===== Picker: 快速查找 (Ctrl+p/f) =====
