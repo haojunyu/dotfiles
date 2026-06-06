@@ -21,6 +21,26 @@
 
 ---
 
+## 缓冲区管理
+
+| 快捷键 | 模式 | 说明 | 来源 |
+|--------|------|------|------|
+| `<leader>bp` | 普通 | 上一个缓冲区 | bufferline |
+| `<leader>bn` | 普通 | 下一个缓冲区 | bufferline |
+| `<leader>bb` | 普通 | 快速选择缓冲区 | bufferline |
+| `<leader>bw` | 普通 | 关闭当前缓冲区 | snacks |
+| `<leader>bW` | 普通 | 关闭其他所有缓冲区 | snacks |
+| `<leader>bd` | 普通 | 关闭左侧缓冲区 | bufferline |
+| `<leader>bf` | 普通 | 关闭右侧缓冲区 | bufferline |
+| `<leader>bm` | 普通 | 前移缓冲区 | bufferline |
+| `<leader>bi` | 普通 | 后移缓冲区 | bufferline |
+| `<leader>bs` | 普通 | 按目录排序缓冲区 | bufferline |
+| `<leader>be` | 普通 | 按扩展名排序缓冲区 | bufferline |
+| `<leader>bt` | 普通 | 按相对目录排序缓冲区 | bufferline |
+| `<leader>1` ~ `<leader>9` | 普通 | 跳转到缓冲区 1-9 | bufferline |
+
+---
+
 ## 终端 (Floaterm)
 
 | 快捷键 | 模式 | 说明 | 来源 |
@@ -30,6 +50,20 @@
 | `<leader>tk` | 普通/终端 | 下一个终端 | floaterm |
 | `<Esc>` | 普通/终端 | 切换终端显示 | floaterm |
 | `<leader>tw` | 普通/终端 | 关闭终端 | floaterm |
+
+---
+
+## 搜索与高亮(当前buffer中)
+
+| 快捷键 | 模式 | 说明 | 来源 |
+|--------|------|------|------|
+| `<leader>l` | 普通 | 清除搜索高亮 | basic (内置) |
+| `n` | 普通 | 下一个搜索结果 (带高亮镜头) | hlslens |
+| `N` | 普通 | 上一个搜索结果 (带高亮镜头) | hlslens |
+| `*` | 普通 | 向前搜索当前词 (带高亮镜头) | hlslens |
+| `#` | 普通 | 向后搜索当前词 (带高亮镜头) | hlslens |
+| `g*` | 普通 | 向前全局搜索当前词(模糊匹配 ask -> piAsk) | hlslens |
+| `g#` | 普通 | 向后全局搜索当前词(模糊匹配) | hlslens |
 
 ---
 
@@ -53,20 +87,6 @@
 ---
 
 
-## 搜索与高亮
-
-| 快捷键 | 模式 | 说明 | 来源 |
-|--------|------|------|------|
-| `<leader>l` | 普通 | 清除搜索高亮 | basic (内置) |
-| `n` | 普通 | 下一个搜索结果 (带高亮镜头) | hlslens |
-| `N` | 普通 | 上一个搜索结果 (带高亮镜头) | hlslens |
-| `*` | 普通 | 向前搜索当前词 (带高亮镜头) | hlslens |
-| `#` | 普通 | 向后搜索当前词 (带高亮镜头) | hlslens |
-| `g*` | 普通 | 向前全局搜索当前词 | hlslens |
-| `g#` | 普通 | 向后全局搜索当前词 | hlslens |
-
----
-
 ## 文件与搜索 (Finder)
 
 | 快捷键 | 模式 | 说明 | 来源 |
@@ -85,26 +105,6 @@
 | `<leader>sd` | 普通 | 当前缓冲区诊断 | snacks |
 | `<leader>sD` | 普通 | 工作区诊断 | snacks |
 | `<leader>tt` | 普通 | 所有选择器 | snacks |
-
----
-
-## 缓冲区管理
-
-| 快捷键 | 模式 | 说明 | 来源 |
-|--------|------|------|------|
-| `<leader>bp` | 普通 | 上一个缓冲区 | bufferline |
-| `<leader>bn` | 普通 | 下一个缓冲区 | bufferline |
-| `<leader>bb` | 普通 | 快速选择缓冲区 | bufferline |
-| `<leader>bc` | 普通 | 关闭当前缓冲区 | snacks |
-| `<leader>bo` | 普通 | 关闭其他所有缓冲区 | snacks |
-| `<leader>bd` | 普通 | 关闭左侧缓冲区 | bufferline |
-| `<leader>bf` | 普通 | 关闭右侧缓冲区 | bufferline |
-| `<leader>bm` | 普通 | 前移缓冲区 | bufferline |
-| `<leader>bi` | 普通 | 后移缓冲区 | bufferline |
-| `<leader>bs` | 普通 | 按目录排序缓冲区 | bufferline |
-| `<leader>be` | 普通 | 按扩展名排序缓冲区 | bufferline |
-| `<leader>bt` | 普通 | 按相对目录排序缓冲区 | bufferline |
-| `<leader>1` ~ `<leader>9` | 普通 | 跳转到缓冲区 1-9 | bufferline |
 
 ---
 

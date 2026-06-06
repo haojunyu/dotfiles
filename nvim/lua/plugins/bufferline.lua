@@ -25,14 +25,14 @@ return
                 desc = "Pick buffer",
             },
             {
-                "<leader>bc",
+                "<leader>bw",
                 function()
                     Snacks.bufdelete()
                 end,
                 desc = "Close buffer",
             },
             {
-                "<leader>bo",
+                "<leader>bW",
                 function()
                     Snacks.bufdelete.other()
                 end,
