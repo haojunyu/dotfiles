@@ -155,15 +155,6 @@ return
                 desc = "LazyGit (snacks)",
                 mode = {"n", "t"}
             },
-            -- LazyGit: 终端方式（原始终端运行）
-            {
-                "<C-5>",
-                function()
-                    Snacks.terminal("lazygit", { win = { position = "top" , height = 0.99}, cwd = vim.fn.getcwd() })
-                end,
-                desc = "LazyGit (terminal)",
-                mode = {"n", "t"}
-            },
             -- ===== Picker: 快速查找 (Ctrl+p/f) =====
             {
                 "<leader>fG",

@@ -2,7 +2,7 @@
 
 ## 高频按键
 
-> 使用 `Ctrl + 数字` 快速切换常用面板，在普通模式和终端模式下均可触发。
+> 使用 `Ctrl + 数字` 或其他组合键快速切换常用面板，在普通模式和终端模式下均可触发。
 
 | 快捷键 | 模式 | 命令 | 说明 | 来源 |
 |--------|------|------|------|------|
@@ -10,8 +10,8 @@
 | `<C-2>` | 普通/终端 | `:ClaudeCode` | 切换 Claude Code | claudecode |
 | `<C-3>` | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度) | snacks |
 | `<C-4>` | 普通/终端 | `Snacks.lazygit()` | LazyGit (snacks 集成版，自动配色 + nvim-remote 编辑) | snacks |
-| `<C-5>` | 普通/终端 | `Snacks.terminal("lazygit")` | LazyGit (终端原版，无额外集成) | snacks |
 | `<C-\`>` | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w` | 切换窗口焦点 | basic (内置) |
+| `<C-Esc>` | 普通/终端 | `:FloatermToggle` | 切换终端显示 | floaterm |
 
 ---
 
@@ -75,7 +75,6 @@
 |--------|------|------|------|------|
 | `<C-3>` | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度) | snacks |
 | `<C-4>` | 普通/终端 | `Snacks.lazygit()` | LazyGit (snacks 集成版) | snacks |
-| `<C-5>` | 普通/终端 | `Snacks.terminal("lazygit")` | LazyGit (终端原版) | snacks |
 | `<leader>tn` | 普通/终端 | `:FloatermNew` | 新建终端 | floaterm |
 | `<leader>tj` | 普通/终端 | `:FloatermPrev` | 上一个终端 | floaterm |
 | `<leader>tk` | 普通/终端 | `:FloatermNext` | 下一个终端 | floaterm |
@@ -191,7 +190,6 @@
 | 快捷键 | 模式 | 命令 | 说明 | 来源 |
 |--------|------|------|------|------|
 | `<C-4>` | 普通/终端 | `Snacks.lazygit()` | LazyGit (snacks 集成版) | snacks |
-| `<C-5>` | 普通/终端 | `Snacks.terminal("lazygit")` | LazyGit (终端原版) | snacks |
 
 ---
 
