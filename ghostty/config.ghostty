@@ -4,13 +4,13 @@ theme = Catppuccin Frappe
 #font-size = 12
 
 ## keybind
-keybind = performable:ctrl+c=copy_to_clipboard
-#keybind = ctrl+t=new_tab
-keybind = ctrl+v=paste_from_clipboard
-keybind = ctrl+d=new_split:right
-keybind = ctrl+shift+d=new_split:down
-keybind = ctrl+[=goto_split:previous
-keybind = ctrl+]=goto_split:next
-keybind = ctrl+k=clear_screen
-keybind = ctrl+page_up=scroll_page_up
-keybind = ctrl+page_down=scroll_page_down
+keybind = performable:super+c=copy_to_clipboard
+keybind = super+t=new_tab
+keybind = super+v=paste_from_clipboard
+keybind = super+d=new_split:right
+keybind = super+shift+d=new_split:down
+keybind = super+[=goto_split:previous
+keybind = super+]=goto_split:next
+keybind = super+k=clear_screen
+keybind = super+page_up=scroll_page_up
+keybind = super+page_down=scroll_page_down

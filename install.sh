@@ -69,7 +69,7 @@ CARGO_EOF
 # ── 3. Utils (TUI tools + git + system utils) ────────────────
 install_utils() {
     echo "==> [utils] Installing utility tools..."
-    sudo apt install -y git lazygit fzf ffmpeg jq resvg imagemagick libclang-dev
+    sudo apt install -y git lazygit fzf ffmpeg jq resvg imagemagick libclang-dev gh
 
     mkdir -p ~/.config/fish/completions
     fdfind --gen-completions fish > ~/.config/fish/completions/fd.fish 2>/dev/null || true
