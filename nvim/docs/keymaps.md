@@ -8,25 +8,29 @@
 > sudo vim /usr/share/X11/xkb/keycodes/evdev
 > <LWIN> = 64;
 > <LALT> = 133;
-> ## 取消单独按 Super 键展示活动总览的功能, 其他和 Super 相关的到系统->键盘->快捷键中取消
-> gsettings set org.gnome.mutter overlay-key ''
 > ## 查看活动展览功能快捷键
 > gsettings list-recursively org.gnome.mutter | grep overlay
+> ## 查看 shell keybindings
+> gsettings list-recursively org.gnome.shell.keybindings | grep -i super
+> ## 查看 shell extensions
+> gsettings list-recursively org.gnome.shell.extensions.dash-to-dock | grep -i super
+> ## ubuntu下默认快捷键的重置: bash ubuntu_keymaps.sh
+>  done
 > ```
 
 
 ## 高频按键
 
-> 使用 `Ctrl + 数字` 或其他组合键快速切换常用面板，在普通模式和终端模式下均可触发。
+> 使用 `Super + 数字` 或其他组合键快速切换常用面板，在普通模式和终端模式下均可触发。
 
 | 快捷键    | 模式      | 命令                            | 说明                                                 | 来源          |
 | --------- | --------- | ------------------------------- | ---------------------------------------------------- | ------------- |
-| `<C-1>`   | 普通/终端 | `:NvimTreeToggle`               | 切换文件浏览器 (NvimTree)                            | file-explorer |
-| `<C-2>`   | 普通/终端 | `:ClaudeCode`                   | 切换 Claude Code                                     | claudecode    |
-| `<C-3>`   | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度)                              | snacks        |
-| `<C-4>`   | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版，自动配色 + nvim-remote 编辑) | snacks        |
-| `<C-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点                                         | basic (内置)  |
-| `<C-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
+| `<D-1>`   | 普通/终端 | `:NvimTreeToggle`               | 切换文件浏览器 (NvimTree)                            | file-explorer |
+| `<D-2>`   | 普通/终端 | `:ClaudeCode`                   | 切换 Claude Code                                     | claudecode    |
+| `<D-3>`   | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度)                              | snacks        |
+| `<D-4>`   | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版，自动配色 + nvim-remote 编辑) | snacks        |
+| `<D-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点                                         | basic (内置)  |
+| `<D-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
 
 ---
 
@@ -48,7 +52,7 @@
 | `<leader>wj` | 普通      | `<C-w>j`                      | 切换到下方窗口 | basic (内置) |
 | `<leader>wk` | 普通      | `<C-w>k`                      | 切换到上方窗口 | basic (内置) |
 | `<leader>wl` | 普通      | `<C-w>l`                      | 切换到右侧窗口 | basic (内置) |
-| `<C-\`>`     | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w` | 切换窗口焦点   | basic (内置) |
+| `<D-\`>`     | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w` | 切换窗口焦点   | basic (内置) |
 
 ---
 
@@ -56,7 +60,7 @@
 
 | 快捷键       | 模式      | 命令              | 说明                      | 来源      |
 | ------------ | --------- | ----------------- | ------------------------- | --------- |
-| `<C-1>`      | 普通/终端 | `:NvimTreeToggle` | 切换文件浏览器 (NvimTree) | nvim-tree |
+| `<D-1>`      | 普通/终端 | `:NvimTreeToggle` | 切换文件浏览器 (NvimTree) | nvim-tree |
 | `<leader>e`  | 普通      | `:NvimTreeToggle` | 切换文件浏览器            | nvim-tree |
 | `<leader>uo` | 普通      | `:Outline`        | 切换大纲视图              | outline   |
 
@@ -88,12 +92,12 @@
 
 | 快捷键       | 模式      | 命令                            | 说明                    | 来源     |
 | ------------ | --------- | ------------------------------- | ----------------------- | -------- |
-| `<C-3>`      | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度) | snacks   |
-| `<C-4>`      | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版) | snacks   |
+| `<D-3>`      | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度) | snacks   |
+| `<D-4>`      | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版) | snacks   |
 | `<leader>tn` | 普通/终端 | `:FloatermNew`                  | 新建终端                | floaterm |
 | `<leader>tj` | 普通/终端 | `:FloatermPrev`                 | 上一个终端              | floaterm |
 | `<leader>tk` | 普通/终端 | `:FloatermNext`                 | 下一个终端              | floaterm |
-| `<C-Esc>`    | 普通/终端 | `:FloatermToggle`               | 切换终端显示            | floaterm |
+| `<D-Esc>`    | 普通/终端 | `:FloatermToggle`               | 切换终端显示            | floaterm |
 | `<leader>tw` | 普通/终端 | `:FloatermKill`                 | 关闭终端                | floaterm |
 
 ---
@@ -102,7 +106,7 @@
 
 | 快捷键       | 模式      | 命令                  | 说明                    | 来源   |
 | ------------ | --------- | --------------------- | ----------------------- | ------ |
-| `<C-4>`      | 普通/终端 | `Snacks.lazygit()`    | LazyGit (snacks 集成版) | snacks |
+| `<D-4>`      | 普通/终端 | `Snacks.lazygit()`    | LazyGit (snacks 集成版) | snacks |
 | `<leader>oi` | 普通      | `:Octo issue list`    | 列出 Issues             | octo   |
 | `<leader>op` | 普通      | `:Octo pr list`       | 列出 PRs                | octo   |
 | `<leader>oP` | 普通      | `:Octo pr`            | 当前分支的 PR           | octo   |
@@ -131,7 +135,7 @@
 
 | 快捷键       | 模式      | 命令                                         | 说明                  | 来源       |
 | ------------ | --------- | -------------------------------------------- | --------------------- | ---------- |
-| `<C-2>`      | 普通/终端 | `:ClaudeCode`                                | 切换 Claude           | claudecode |
+| `<D-2>`      | 普通/终端 | `:ClaudeCode`                                | 切换 Claude           | claudecode |
 | `<leader>ac` | 普通      | `:ClaudeCode`                                | 切换 Claude           | claudecode |
 | `<leader>af` | 普通      | `:ClaudeCodeFocus`                           | 聚焦 Claude           | claudecode |
 | `<leader>ar` | 普通      | `:ClaudeCode --resume`                       | 恢复会话              | claudecode |

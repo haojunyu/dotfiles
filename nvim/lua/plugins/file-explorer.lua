@@ -35,7 +35,7 @@ return
             select_prompts = true,
         },
         keys = {
-            { "<C-1>", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" , mode = {"n", "t"}},
+            { "<D-1>", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" , mode = {"n", "t"}},
             { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree" },
         },
     },

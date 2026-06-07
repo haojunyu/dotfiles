@@ -72,8 +72,8 @@ vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Switch to left window" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Switch to below window" })
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Switch to above window" })
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Switch to right window" })
-vim.keymap.set("n", "<C-`>", "<C-w>w", { desc = "Switch window" })
-vim.keymap.set("t", "<C-`>", "<C-\\><C-n><C-w>w", { desc = "Switch window (from terminal)" })
+vim.keymap.set("n", "<D-`>", "<C-w>w", { desc = "Switch window" })
+vim.keymap.set("t", "<D-`>", "<C-\\><C-n><C-w>w", { desc = "Switch window (from terminal)" })
 
 -- =====================
 -- 命令行

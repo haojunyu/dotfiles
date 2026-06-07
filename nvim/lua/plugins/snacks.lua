@@ -139,7 +139,7 @@ return
             },
             -- Terminal
             {
-                "<C-3>",
+                "<D-3>",
                 function()
                     Snacks.terminal(nil, { win = { position = "bottom", height = 0.3 } })
                 end,
@@ -148,7 +148,7 @@ return
             },
             -- LazyGit: snacks 集成（自动配色 + nvim-remote 编辑）
             {
-                "<C-4>",
+                "<D-4>",
                 function()
                     Snacks.lazygit()
                 end,
