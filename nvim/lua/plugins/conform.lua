@@ -52,6 +52,14 @@ return
                 mode = "n",
                 desc = "Format buffer",
             },
+            {
+                "<D-F>",
+                function()
+                    require("conform").format({ async = true })
+                end,
+                mode = "n",
+                desc = "Format buffer (quick)",
+            },
         },
     },
 }

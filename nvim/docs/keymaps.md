@@ -3,6 +3,7 @@
 > TIPS:
 > 为了保证ubuntu 中的快捷键（Ctrl-Super-Alt）和 mac 中的按键（Ctrl-Alt-Super）习惯一致，所有将ubuntu中的Super
 > 和 Alt 键位互换，并且禁掉 ubuntu 中 Super 相关的快捷键
+>
 > ```bash
 > ## Super（133）换左alt（64）,接近mac按键习惯 【option】
 > sudo vim /usr/share/X11/xkb/keycodes/evdev
@@ -18,7 +19,6 @@
 >  done
 > ```
 
-
 ## 高频按键
 
 > 使用 `Super + 数字` 或其他组合键快速切换常用面板，在普通模式和终端模式下均可触发。
@@ -29,7 +29,10 @@
 | `<D-2>`   | 普通/终端 | `:ClaudeCode`                   | 切换 Claude Code                                     | claudecode    |
 | `<D-3>`   | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度)                              | snacks        |
 | `<D-4>`   | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版，自动配色 + nvim-remote 编辑) | snacks        |
-| `<D-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点                                         | basic (内置)  |
+| `<D-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点(**可能和fcitx的快速输入快捷键冲突**)    | basic (内置)  |
+| `<D-F>`  | 普通      | `conform.format({async=true})` | 格式化代码                                       | conform       |
+| `<D-b>`  | 普通      | `<C-b>zz`                    | 向上翻整页 (光标居中)                            | basic (内置)  |
+| `<D-f>`  | 普通      | `<C-f>zz`                    | 向下翻整页 (光标居中)                            | basic (内置)  |
 | `<D-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
 
 ---
@@ -38,6 +41,24 @@
 
 - **Leader 键**: `<Space>` (空格键)
 - **Local Leader 键**: `,` (逗号)
+
+---
+
+## 滚屏
+
+> 所有滚屏场景统一使用 `Super+b` / `Super+f`，方便记忆。
+> 主编辑区的滚屏自带 `zz` (光标回到屏幕中间)。
+
+| 快捷键  | 模式      | 说明                     | 作用域             |
+| ------- | --------- | ------------------------ | ------------------ |
+| `<D-b>` | 普通      | 向上翻整页 (光标居中)    | 主编辑区           |
+| `<D-f>` | 普通      | 向下翻整页 (光标居中)    | 主编辑区           |
+| `<D-b>` | 普通      | 向上滚屏                 | 折叠预览窗 (ufo)   |
+| `<D-f>` | 普通      | 向下滚屏                 | 折叠预览窗 (ufo)   |
+| `<D-b>` | 普通      | 预览向上滚屏             | 文件查找预览 (fff) |
+| `<D-f>` | 普通      | 预览向下滚屏             | 文件查找预览 (fff) |
+| `<D-b>` | 插入      | 补全文档向上滚屏         | blink.cmp 文档窗   |
+| `<D-f>` | 插入      | 补全文档向下滚屏         | blink.cmp 文档窗   |
 
 ---
 
@@ -223,6 +244,7 @@
 | 快捷键      | 模式 | 命令                           | 说明       | 来源    |
 | ----------- | ---- | ------------------------------ | ---------- | ------- |
 | `<leader>f` | 普通 | `conform.format({async=true})` | 格式化代码 | conform |
+| `<D-F>`     | 普通 | `conform.format({async=true})` | 格式化代码 | conform |
 
 ---
 
@@ -317,4 +339,3 @@
 ---
 
 > **提示**: 使用 `<leader>?` 可随时查看当前上下文中所有可用的快捷键。
-

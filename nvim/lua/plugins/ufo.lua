@@ -46,8 +46,8 @@ return
                         winblend = 0,
                     },
                     mappings = {
-                        scrollU = "<C-u>",
-                        scrollD = "<C-d>",
+                        scrollU = "<D-b>",
+                        scrollD = "<D-f>",
                         jumpTop = "[",
                         jumpBot = "]",
                     },

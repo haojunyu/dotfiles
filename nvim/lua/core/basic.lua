@@ -16,6 +16,12 @@ o.scrolloff = 5         -- 光标距离窗口顶部/底部保持 5 行距离
 o.sidescroll = 5        -- 水平滚动时每次移动 5 列
 
 -- =====================
+-- 高频滚屏快捷键 (Ctrl→Super)
+-- =====================
+vim.keymap.set("n", "<D-b>", "<C-b>zz", { desc = "Scroll up full page" })
+vim.keymap.set("n", "<D-f>", "<C-f>zz", { desc = "Scroll down full page" })
+
+-- =====================
 -- 工作目录
 -- =====================
 o.autochdir = false     -- 不自动切换工作目录到当前文件所在目录

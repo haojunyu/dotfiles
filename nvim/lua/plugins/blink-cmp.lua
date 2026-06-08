@@ -83,9 +83,9 @@ return
                 ["<CR>"] = { "accept", "fallback" },
 
                 -- doc up
-                ["<C-b>"] = { "scroll_documentation_up", "fallback" },
+                ["<D-b>"] = { "scroll_documentation_up", "fallback" },
                 -- doc down
-                ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+                ["<D-f>"] = { "scroll_documentation_down", "fallback" },
 
                 -- next snippet
                 ["<C-l>"] = { "snippet_forward", "fallback" },
