@@ -64,7 +64,21 @@ return
                 desc = "Find files (FFF)",
             },
             {
+                "<D-r>",
+                function()
+                    require("fff").find_files()
+                end,
+                desc = "Find files (FFF)",
+            },
+            {
                 "<leader>fF",
+                function()
+                    require("fff").find_files({ ignore = {} })
+                end,
+                desc = "Find files (all, FFF)",
+            },
+            {
+                "<D-R>",
                 function()
                     require("fff").find_files({ ignore = {} })
                 end,
@@ -73,6 +87,13 @@ return
             -- ===== FFF 内容搜索 =====
             {
                 "<leader>fg",
+                function()
+                    require("fff").live_grep()
+                end,
+                desc = "Live grep (FFF)",
+            },
+            {
+                "<D-g>",
                 function()
                     require("fff").live_grep()
                 end,
@@ -91,6 +112,20 @@ return
                     require("fff").live_grep({ query = vim.fn.expand("<cword>") })
                 end,
                 desc = "Grep cursor word (FFF)",
+            },
+            {
+                "<leader>fG",
+                function()
+                    require("snacks").picker.grep({ hidden = true, ignored = true })
+                end,
+                desc = "Global grep (Snacks)",
+            },
+            {
+                "<D-G>",
+                function()
+                    require("snacks").picker.grep({ hidden = true, ignored = true })
+                end,
+                desc = "Global grep (Snacks)",
             },
             -- ===== FFF 其他搜索 =====
             {

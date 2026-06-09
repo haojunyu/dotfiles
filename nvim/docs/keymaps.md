@@ -33,6 +33,10 @@
 | `<D-F>`   | 普通      | `conform.format({async=true})`  | 格式化代码                                           | conform       |
 | `<D-b>`   | 普通      | `<C-b>`                         | 向上翻整页                                           | basic (内置)  |
 | `<D-f>`   | 普通      | `<C-f>`                         | 向下翻整页                                           | basic (内置)  |
+| `<D-g>`   | 普通      | `fff.live_grep()`               | 实时搜索 (grep)                                      | fff           |
+| `<D-G>`   | 普通      | `Snacks.picker.grep`            | 全局搜索 (含隐藏/忽略文件)                           | snacks        |
+| `<D-r>`   | 普通      | `fff.find_files()`              | 查找文件                                             | fff           |
+| `<D-R>`   | 普通      | `fff.find_files({ignore={}})`   | 查找所有文件 (包括隐藏)                              | fff           |
 | `<D-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
 
 ---
@@ -141,12 +145,16 @@
 | 快捷键       | 模式 | 命令                                    | 说明                       | 来源   |
 | ------------ | ---- | --------------------------------------- | -------------------------- | ------ |
 | `<leader>ff` | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
+| `<D-r>`      | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
 | `<leader>fF` | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
+| `<D-R>`      | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
 | `<leader>fg` | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
+| `<D-g>`      | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
 | `<leader>/`  | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
 | `<leader>*`  | 普通 | `fff.live_grep({query=<cword>})`        | 搜索光标下单词             | fff    |
 | `<leader>fz` | 普通 | `fff.live_grep({fuzzy+plain})`          | 模糊搜索                   | fff    |
 | `<leader>fG` | 普通 | `Snacks.picker.grep` (hidden+ignored)   | 全局搜索 (含隐藏/忽略文件) | snacks |
+| `<D-G>`      | 普通 | `Snacks.picker.grep` (hidden+ignored)   | 全局搜索 (含隐藏/忽略文件) | snacks |
 | `<leader>fb` | 普通 | `Snacks.picker.buffers()`               | 查找缓冲区                 | snacks |
 | `<leader>fr` | 普通 | `Snacks.picker.recent()`                | 最近打开的文件             | snacks |
 | `<leader>ss` | 普通 | `Snacks.picker.lsp_symbols()`           | 文档符号                   | snacks |
