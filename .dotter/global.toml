@@ -47,5 +47,12 @@ depends = ["shell"]
 "ghostty" = { target = "~/.config/ghostty", type = "symbolic" }
 
 
+[keyd]
+depends = ["shell"]
+
+[keyd.files]
+"keyd.conf" = { target = "/etc/keyd/default.conf", type = "template", if = "dotter.linux" }
+
+
 [settings]
 default_target_type = "automatic"

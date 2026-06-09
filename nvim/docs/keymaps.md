@@ -30,9 +30,9 @@
 | `<D-3>`   | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度)                              | snacks        |
 | `<D-4>`   | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版，自动配色 + nvim-remote 编辑) | snacks        |
 | `<D-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点(**可能和fcitx的快速输入快捷键冲突**)    | basic (内置)  |
-| `<D-F>`  | 普通      | `conform.format({async=true})` | 格式化代码                                       | conform       |
-| `<D-b>`  | 普通      | `<C-b>zz`                    | 向上翻整页 (光标居中)                            | basic (内置)  |
-| `<D-f>`  | 普通      | `<C-f>zz`                    | 向下翻整页 (光标居中)                            | basic (内置)  |
+| `<D-F>`   | 普通      | `conform.format({async=true})`  | 格式化代码                                           | conform       |
+| `<D-b>`   | 普通      | `<C-b>`                         | 向上翻整页                                           | basic (内置)  |
+| `<D-f>`   | 普通      | `<C-f>`                         | 向下翻整页                                           | basic (内置)  |
 | `<D-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
 
 ---
@@ -47,18 +47,17 @@
 ## 滚屏
 
 > 所有滚屏场景统一使用 `Super+b` / `Super+f`，方便记忆。
-> 主编辑区的滚屏自带 `zz` (光标回到屏幕中间)。
 
-| 快捷键  | 模式      | 说明                     | 作用域             |
-| ------- | --------- | ------------------------ | ------------------ |
-| `<D-b>` | 普通      | 向上翻整页 (光标居中)    | 主编辑区           |
-| `<D-f>` | 普通      | 向下翻整页 (光标居中)    | 主编辑区           |
-| `<D-b>` | 普通      | 向上滚屏                 | 折叠预览窗 (ufo)   |
-| `<D-f>` | 普通      | 向下滚屏                 | 折叠预览窗 (ufo)   |
-| `<D-b>` | 普通      | 预览向上滚屏             | 文件查找预览 (fff) |
-| `<D-f>` | 普通      | 预览向下滚屏             | 文件查找预览 (fff) |
-| `<D-b>` | 插入      | 补全文档向上滚屏         | blink.cmp 文档窗   |
-| `<D-f>` | 插入      | 补全文档向下滚屏         | blink.cmp 文档窗   |
+| 快捷键  | 模式 | 命令           | 说明             | 作用域             |
+| ------- | ---- | -------------- | ---------------- | ------------------ |
+| `<D-b>` | 普通 | `<C-b>`        | 向上翻整页       | 主编辑区           |
+| `<D-f>` | 普通 | `<C-f>`        | 向下翻整页       | 主编辑区           |
+| `<D-b>` | 普通 | `scrollU`      | 向上滚屏         | 折叠预览窗 (ufo)   |
+| `<D-f>` | 普通 | `scrollD`      | 向下滚屏         | 折叠预览窗 (ufo)   |
+| `<D-b>` | 普通 | `preview_scroll_up` | 预览向上滚屏 | 文件查找预览 (fff) |
+| `<D-f>` | 普通 | `preview_scroll_down` | 预览向下滚屏 | 文件查找预览 (fff) |
+| `<D-b>` | 插入 | `scroll_documentation_up` | 补全文档向上滚屏 | blink.cmp 文档窗   |
+| `<D-f>` | 插入 | `scroll_documentation_down` | 补全文档向下滚屏 | blink.cmp 文档窗   |
 
 ---
 
@@ -123,6 +122,68 @@
 
 ---
 
+## 搜索与高亮(当前buffer中)
+
+| 快捷键      | 模式 | 命令                     | 说明                                      | 来源         |
+| ----------- | ---- | ------------------------ | ----------------------------------------- | ------------ |
+| `<leader>l` | 普通 | `:nohlsearch`            | 清除搜索高亮                              | basic (内置) |
+| `n`         | 普通 | `n` + `hlslens.start()`  | 下一个搜索结果 (带高亮镜头)               | hlslens      |
+| `N`         | 普通 | `N` + `hlslens.start()`  | 上一个搜索结果 (带高亮镜头)               | hlslens      |
+| `*`         | 普通 | `*` + `hlslens.start()`  | 向前搜索当前词 (带高亮镜头)               | hlslens      |
+| `#`         | 普通 | `#` + `hlslens.start()`  | 向后搜索当前词 (带高亮镜头)               | hlslens      |
+| `g*`        | 普通 | `g*` + `hlslens.start()` | 向前全局搜索当前词(模糊匹配 ask -> piAsk) | hlslens      |
+| `g#`        | 普通 | `g#` + `hlslens.start()` | 向后全局搜索当前词(模糊匹配)              | hlslens      |
+
+---
+
+## 文件与搜索 (Finder)
+
+| 快捷键       | 模式 | 命令                                    | 说明                       | 来源   |
+| ------------ | ---- | --------------------------------------- | -------------------------- | ------ |
+| `<leader>ff` | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
+| `<leader>fF` | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
+| `<leader>fg` | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
+| `<leader>/`  | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
+| `<leader>*`  | 普通 | `fff.live_grep({query=<cword>})`        | 搜索光标下单词             | fff    |
+| `<leader>fz` | 普通 | `fff.live_grep({fuzzy+plain})`          | 模糊搜索                   | fff    |
+| `<leader>fG` | 普通 | `Snacks.picker.grep` (hidden+ignored)   | 全局搜索 (含隐藏/忽略文件) | snacks |
+| `<leader>fb` | 普通 | `Snacks.picker.buffers()`               | 查找缓冲区                 | snacks |
+| `<leader>fr` | 普通 | `Snacks.picker.recent()`                | 最近打开的文件             | snacks |
+| `<leader>ss` | 普通 | `Snacks.picker.lsp_symbols()`           | 文档符号                   | snacks |
+| `<leader>sS` | 普通 | `Snacks.picker.lsp_workspace_symbols()` | 工作区符号                 | snacks |
+| `<leader>sd` | 普通 | `Snacks.picker.diagnostics_buffer()`    | 当前缓冲区诊断             | snacks |
+| `<leader>sD` | 普通 | `Snacks.picker.diagnostics()`           | 工作区诊断                 | snacks |
+| `<leader>tt` | 普通 | `Snacks.picker.pickers()`               | 所有选择器                 | snacks |
+
+---
+
+## 代码操作（格式化/拆分/合并/折叠/跳转？）
+
+| 快捷键      | 模式 | 命令                                                       | 说明                    | 来源    |
+| ----------- | ---- | ---------------------------------------------------------- | ----------------------- | ------- |
+| `<leader>f` | 普通 | `conform.format({async=true})`                             | 格式化代码              | conform |
+| `<D-F>`     | 普通 | `conform.format({async=true})`                             | 格式化代码              | conform |
+| `<leader>m` | 普通 | `treesj.toggle()`                                          | 切换拆分/合并           | treesj  |
+| `zR`        | 普通 | `ufo.openAllFolds()`                                       | 展开所有折叠            | ufo     |
+| `zM`        | 普通 | `ufo.closeAllFolds()`                                      | 关闭所有折叠            | ufo     |
+| `zr`        | 普通 | `ufo.openFoldsExceptKinds()`                               | 展开折叠 (排除指定类型) | ufo     |
+| `zm`        | 普通 | `ufo.closeFoldsWith()`                                     | 关闭折叠 (指定类型)     | ufo     |
+| `zK`        | 普通 | `ufo.peekFoldedLinesUnderCursor()` / `vim.lsp.buf.hover()` | 预览光标下折叠内容      | ufo     |
+
+---
+
+## 快速跳转 (Flash)
+
+| 快捷键  | 模式        | 命令                        | 说明            | 来源  |
+| ------- | ----------- | --------------------------- | --------------- | ----- |
+| `s`     | 普通/可视   | `flash.jump()`              | Flash 跳转      | flash |
+| `S`     | 普通/可视   | `flash.treesitter()`        | Treesitter 跳转 | flash |
+| `r`     | 操作符      | `flash.remote()`            | 远程 Flash      | flash |
+| `R`     | 操作符/可视 | `flash.treesitter_search()` | Treesitter 搜索 | flash |
+| `<C-s>` | 命令行      | `flash.toggle()`            | 切换 Flash 搜索 | flash |
+
+---
+
 ## Git 和 GitHub (Octo)
 
 | 快捷键       | 模式      | 命令                  | 说明                    | 来源   |
@@ -135,20 +196,6 @@
 | `<leader>or` | 普通      | `:Octo review start`  | 开始 PR 审查            | octo   |
 | `<leader>oR` | 普通      | `:Octo review resume` | 继续 PR 审查            | octo   |
 | `<leader>os` | 普通      | `:Octo search`        | 搜索 GitHub             | octo   |
-
----
-
-## 搜索与高亮(当前buffer中)
-
-| 快捷键      | 模式 | 命令                     | 说明                                      | 来源         |
-| ----------- | ---- | ------------------------ | ----------------------------------------- | ------------ |
-| `<leader>l` | 普通 | `:nohlsearch`            | 清除搜索高亮                              | basic (内置) |
-| `n`         | 普通 | `n` + `hlslens.start()`  | 下一个搜索结果 (带高亮镜头)               | hlslens      |
-| `N`         | 普通 | `N` + `hlslens.start()`  | 上一个搜索结果 (带高亮镜头)               | hlslens      |
-| `*`         | 普通 | `*` + `hlslens.start()`  | 向前搜索当前词 (带高亮镜头)               | hlslens      |
-| `#`         | 普通 | `#` + `hlslens.start()`  | 向后搜索当前词 (带高亮镜头)               | hlslens      |
-| `g*`        | 普通 | `g*` + `hlslens.start()` | 向前全局搜索当前词(模糊匹配 ask -> piAsk) | hlslens      |
-| `g#`        | 普通 | `g#` + `hlslens.start()` | 向后全局搜索当前词(模糊匹配)              | hlslens      |
 
 ---
 
@@ -172,26 +219,13 @@
 
 ---
 
----
+## Treesitter 导航
 
-## 文件与搜索 (Finder)
-
-| 快捷键       | 模式 | 命令                                    | 说明                       | 来源   |
-| ------------ | ---- | --------------------------------------- | -------------------------- | ------ |
-| `<leader>ff` | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
-| `<leader>fF` | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
-| `<leader>fg` | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
-| `<leader>/`  | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
-| `<leader>*`  | 普通 | `fff.live_grep({query=<cword>})`        | 搜索光标下单词             | fff    |
-| `<leader>fz` | 普通 | `fff.live_grep({fuzzy+plain})`          | 模糊搜索                   | fff    |
-| `<leader>fG` | 普通 | `Snacks.picker.grep` (hidden+ignored)   | 全局搜索 (含隐藏/忽略文件) | snacks |
-| `<leader>fb` | 普通 | `Snacks.picker.buffers()`               | 查找缓冲区                 | snacks |
-| `<leader>fr` | 普通 | `Snacks.picker.recent()`                | 最近打开的文件             | snacks |
-| `<leader>ss` | 普通 | `Snacks.picker.lsp_symbols()`           | 文档符号                   | snacks |
-| `<leader>sS` | 普通 | `Snacks.picker.lsp_workspace_symbols()` | 工作区符号                 | snacks |
-| `<leader>sd` | 普通 | `Snacks.picker.diagnostics_buffer()`    | 当前缓冲区诊断             | snacks |
-| `<leader>sD` | 普通 | `Snacks.picker.diagnostics()`           | 工作区诊断                 | snacks |
-| `<leader>tt` | 普通 | `Snacks.picker.pickers()`               | 所有选择器                 | snacks |
+| 快捷键       | 模式             | 命令                                          | 说明               | 来源                    |
+| ------------ | ---------------- | --------------------------------------------- | ------------------ | ----------------------- |
+| `<leader>[c` | 普通             | `treesitter-context.go_to_context()`          | 跳到上一个上下文   | nvim-treesitter-context |
+| `<leader>]m` | 普通/可视/操作符 | `move.goto_next_end("@function.outer")`       | 跳到下一个函数结尾 | nvim-treesitter         |
+| `<leader>[m` | 普通/可视/操作符 | `move.goto_previous_start("@function.outer")` | 跳到上一个函数开头 | nvim-treesitter         |
 
 ---
 
@@ -236,47 +270,6 @@
 | `<leader>dC` | 普通      | `dap.run_to_cursor()`                  | 运行到光标处      | dap               |
 | `<leader>dg` | 普通      | `dap.goto_()`                          | 跳转到行 (不执行) | dap               |
 | `<leader>dw` | 普通      | `dap.ui.widgets.hover()`               | 调试组件          | dap / nvim-dap-ui |
-
----
-
-## 代码格式化
-
-| 快捷键      | 模式 | 命令                           | 说明       | 来源    |
-| ----------- | ---- | ------------------------------ | ---------- | ------- |
-| `<leader>f` | 普通 | `conform.format({async=true})` | 格式化代码 | conform |
-| `<D-F>`     | 普通 | `conform.format({async=true})` | 格式化代码 | conform |
-
----
-
-## 代码拆分/合并
-
-| 快捷键      | 模式 | 命令              | 说明          | 来源   |
-| ----------- | ---- | ----------------- | ------------- | ------ |
-| `<leader>m` | 普通 | `treesj.toggle()` | 切换拆分/合并 | treesj |
-
----
-
-## 折叠 (UFO)
-
-| 快捷键 | 模式 | 命令                                                       | 说明                    | 来源 |
-| ------ | ---- | ---------------------------------------------------------- | ----------------------- | ---- |
-| `zR`   | 普通 | `ufo.openAllFolds()`                                       | 展开所有折叠            | ufo  |
-| `zM`   | 普通 | `ufo.closeAllFolds()`                                      | 关闭所有折叠            | ufo  |
-| `zr`   | 普通 | `ufo.openFoldsExceptKinds()`                               | 展开折叠 (排除指定类型) | ufo  |
-| `zm`   | 普通 | `ufo.closeFoldsWith()`                                     | 关闭折叠 (指定类型)     | ufo  |
-| `zK`   | 普通 | `ufo.peekFoldedLinesUnderCursor()` / `vim.lsp.buf.hover()` | 预览光标下折叠内容      | ufo  |
-
----
-
-## 快速跳转 (Flash)
-
-| 快捷键  | 模式        | 命令                        | 说明            | 来源  |
-| ------- | ----------- | --------------------------- | --------------- | ----- |
-| `s`     | 普通/可视   | `flash.jump()`              | Flash 跳转      | flash |
-| `S`     | 普通/可视   | `flash.treesitter()`        | Treesitter 跳转 | flash |
-| `r`     | 操作符      | `flash.remote()`            | 远程 Flash      | flash |
-| `R`     | 操作符/可视 | `flash.treesitter_search()` | Treesitter 搜索 | flash |
-| `<C-s>` | 命令行      | `flash.toggle()`            | 切换 Flash 搜索 | flash |
 
 ---
 
@@ -325,16 +318,6 @@
 | 快捷键      | 模式 | 命令                             | 说明                 | 来源      |
 | ----------- | ---- | -------------------------------- | -------------------- | --------- |
 | `<leader>?` | 普通 | `which-key.show({global=false})` | 查看当前缓冲区快捷键 | which-key |
-
----
-
-## Treesitter 导航
-
-| 快捷键       | 模式             | 命令                                          | 说明               | 来源                    |
-| ------------ | ---------------- | --------------------------------------------- | ------------------ | ----------------------- |
-| `<leader>[c` | 普通             | `treesitter-context.go_to_context()`          | 跳到上一个上下文   | nvim-treesitter-context |
-| `<leader>]m` | 普通/可视/操作符 | `move.goto_next_end("@function.outer")`       | 跳到下一个函数结尾 | nvim-treesitter         |
-| `<leader>[m` | 普通/可视/操作符 | `move.goto_previous_start("@function.outer")` | 跳到上一个函数开头 | nvim-treesitter         |
 
 ---
 

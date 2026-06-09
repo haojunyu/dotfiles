@@ -32,7 +32,7 @@ return
             -- 预览
             preview = {
                 enabled = true,
-                line_numbers = false,
+                line_numbers = true,
             },
             -- 快捷键映射（大部分与 blink.cmp 一致的快捷键）
             keymaps = {

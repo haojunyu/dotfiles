@@ -18,8 +18,8 @@ o.sidescroll = 5        -- 水平滚动时每次移动 5 列
 -- =====================
 -- 高频滚屏快捷键 (Ctrl→Super)
 -- =====================
-vim.keymap.set("n", "<D-b>", "<C-b>zz", { desc = "Scroll up full page" })
-vim.keymap.set("n", "<D-f>", "<C-f>zz", { desc = "Scroll down full page" })
+vim.keymap.set("n", "<D-b>", "<C-b>", { desc = "Scroll up full page" })
+vim.keymap.set("n", "<D-f>", "<C-f>", { desc = "Scroll down full page" })
 
 -- =====================
 -- 工作目录
