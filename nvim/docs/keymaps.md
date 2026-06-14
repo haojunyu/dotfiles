@@ -19,7 +19,9 @@
 >  done
 > ```
 
+
 ## 高频按键
+### 面板
 
 > 使用 `Super + 数字` 或其他组合键快速切换常用面板，在普通模式和终端模式下均可触发。
 
@@ -29,7 +31,7 @@
 | `<D-2>`   | 普通/终端 | `:ClaudeCode`                   | 切换 Claude Code                                     | claudecode    |
 | `<D-3>`   | 普通/终端 | `Snacks.terminal` (bottom, 30%) | 切换底部终端 (30% 高度)                              | snacks        |
 | `<D-4>`   | 普通/终端 | `Snacks.lazygit()`              | LazyGit (snacks 集成版，自动配色 + nvim-remote 编辑) | snacks        |
-| `<D-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点(**可能和fcitx的快速输入快捷键冲突**)    | basic (内置)  |
+| `<D-\`>`  | 普通/终端 | `<C-w>w` / `<C-\><C-n><C-w>w`   | 切换窗口焦点                                         | basic (内置)  |
 | `<D-F>`   | 普通      | `conform.format({async=true})`  | 格式化代码                                           | conform       |
 | `<D-b>`   | 普通      | `<C-b>`                         | 向上翻整页                                           | basic (内置)  |
 | `<D-f>`   | 普通      | `<C-f>`                         | 向下翻整页                                           | basic (内置)  |
@@ -39,6 +41,13 @@
 | `<D-R>`   | 普通      | `fff.find_files({ignore={}})`   | 查找所有文件 (包括隐藏)                              | fff           |
 | `<D-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
 
+
+### 编码
+
+| 快捷键      | 模式       | 命令              | 说明             | 来源         |
+| ----------- | ---------- | ----------------- | ---------------- | ------------ |
+| `gcc`       | 普通       | 切换注释当前行    | 注释/取消注释    | 内置 (ts-comments) |
+| `gc` + 运动 | 普通       | 切换注释运动范围  | 如 `gcip` 注释段落 | 内置 (ts-comments) |
 ---
 
 ## 基础配置
@@ -52,15 +61,15 @@
 
 > 所有滚屏场景统一使用 `Super+b` / `Super+f`，方便记忆。
 
-| 快捷键  | 模式 | 命令           | 说明             | 作用域             |
-| ------- | ---- | -------------- | ---------------- | ------------------ |
-| `<D-b>` | 普通 | `<C-b>`        | 向上翻整页       | 主编辑区           |
-| `<D-f>` | 普通 | `<C-f>`        | 向下翻整页       | 主编辑区           |
-| `<D-b>` | 普通 | `scrollU`      | 向上滚屏         | 折叠预览窗 (ufo)   |
-| `<D-f>` | 普通 | `scrollD`      | 向下滚屏         | 折叠预览窗 (ufo)   |
-| `<D-b>` | 普通 | `preview_scroll_up` | 预览向上滚屏 | 文件查找预览 (fff) |
-| `<D-f>` | 普通 | `preview_scroll_down` | 预览向下滚屏 | 文件查找预览 (fff) |
-| `<D-b>` | 插入 | `scroll_documentation_up` | 补全文档向上滚屏 | blink.cmp 文档窗   |
+| 快捷键  | 模式 | 命令                        | 说明             | 作用域             |
+| ------- | ---- | --------------------------- | ---------------- | ------------------ |
+| `<D-b>` | 普通 | `<C-b>`                     | 向上翻整页       | 主编辑区           |
+| `<D-f>` | 普通 | `<C-f>`                     | 向下翻整页       | 主编辑区           |
+| `<D-b>` | 普通 | `scrollU`                   | 向上滚屏         | 折叠预览窗 (ufo)   |
+| `<D-f>` | 普通 | `scrollD`                   | 向下滚屏         | 折叠预览窗 (ufo)   |
+| `<D-b>` | 普通 | `preview_scroll_up`         | 预览向上滚屏     | 文件查找预览 (fff) |
+| `<D-f>` | 普通 | `preview_scroll_down`       | 预览向下滚屏     | 文件查找预览 (fff) |
+| `<D-b>` | 插入 | `scroll_documentation_up`   | 补全文档向上滚屏 | blink.cmp 文档窗   |
 | `<D-f>` | 插入 | `scroll_documentation_down` | 补全文档向下滚屏 | blink.cmp 文档窗   |
 
 ---
@@ -182,10 +191,10 @@
 
 ## 快速跳转 (Flash)
 
+> Flash 的 `s`/`S` 快捷键已禁用，仅保留操作符模式下的远程跳转。
+
 | 快捷键  | 模式        | 命令                        | 说明            | 来源  |
 | ------- | ----------- | --------------------------- | --------------- | ----- |
-| `s`     | 普通/可视   | `flash.jump()`              | Flash 跳转      | flash |
-| `S`     | 普通/可视   | `flash.treesitter()`        | Treesitter 跳转 | flash |
 | `r`     | 操作符      | `flash.remote()`            | 远程 Flash      | flash |
 | `R`     | 操作符/可视 | `flash.treesitter_search()` | Treesitter 搜索 | flash |
 | `<C-s>` | 命令行      | `flash.toggle()`            | 切换 Flash 搜索 | flash |
