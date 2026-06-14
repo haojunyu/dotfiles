@@ -3,6 +3,7 @@ return {
     {
         "jinzhongjia/LspUI.nvim",
         dev = true,
+        enabled = false,  -- 等自带的lsp研究清楚后再决定是否打开
         event = "LspAttach",
         opts = {
             signature = {

@@ -64,7 +64,7 @@ return
                 desc = "Find files (FFF)",
             },
             {
-                "<D-r>",
+                "<D-n>",
                 function()
                     require("fff").find_files()
                 end,
@@ -78,7 +78,7 @@ return
                 desc = "Find files (all, FFF)",
             },
             {
-                "<D-R>",
+                "<D-N>",
                 function()
                     require("fff").find_files({ ignore = {} })
                 end,

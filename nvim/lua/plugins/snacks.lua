@@ -182,6 +182,13 @@ return
 
             -- ===== Picker: LSP 符号 (leader-s = search/symbols) =====
             {
+                "<D-r>",
+                function()
+                    Snacks.picker.lsp_references()
+                end,
+                desc = "Document lsp_references",
+            },
+            {
                 "<leader>ss",
                 function()
                     Snacks.picker.lsp_symbols()

@@ -51,22 +51,28 @@ return
             end
 
             vim.api.nvim_create_autocmd("LspAttach", {
-                callback = function(args)
-                    local buftype = vim.bo[args.buf].buftype
+                callback = function(event)
+                    local buftype = vim.bo[event.buf].buftype
                     if buftype == "nofile" then
                         vim.schedule(function()
-                            pcall(vim.lsp.buf_detach_client, args.buf, args.data.client_id)
+                            pcall(vim.lsp.buf_detach_client, event.buf, event.data.client_id)
                         end)
                         return true
                     end
 
-                    local bufname = vim.api.nvim_buf_get_name(args.buf)
+                    local bufname = vim.api.nvim_buf_get_name(event.buf)
                     if #bufname > 0 and not bufname_valid(bufname) then
                         vim.schedule(function()
-                            pcall(vim.lsp.buf_detach_client, args.buf, args.data.client_id)
+                            pcall(vim.lsp.buf_detach_client, event.buf, event.data.client_id)
                         end)
                         return true
                     end
+
+                    -- 设置快捷键
+                    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buf = event.buf, desc = 'LSP: Goto Definition'})
+                    vim.keymap.set('n', 'grr', function()
+                        require('snacks').picker.lsp_references()
+                    end, { buf = event.buf, desc = 'LSP: Goto Reference'})
                 end,
             })
 

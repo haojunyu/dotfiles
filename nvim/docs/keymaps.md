@@ -19,8 +19,8 @@
 >  done
 > ```
 
-
 ## 高频按键
+
 ### 面板
 
 > 使用 `Super + 数字` 或其他组合键快速切换常用面板，在普通模式和终端模式下均可触发。
@@ -37,17 +37,20 @@
 | `<D-f>`   | 普通      | `<C-f>`                         | 向下翻整页                                           | basic (内置)  |
 | `<D-g>`   | 普通      | `fff.live_grep()`               | 实时搜索 (grep)                                      | fff           |
 | `<D-G>`   | 普通      | `Snacks.picker.grep`            | 全局搜索 (含隐藏/忽略文件)                           | snacks        |
-| `<D-r>`   | 普通      | `fff.find_files()`              | 查找文件                                             | fff           |
-| `<D-R>`   | 普通      | `fff.find_files({ignore={}})`   | 查找所有文件 (包括隐藏)                              | fff           |
+| `<D-n>`   | 普通      | `fff.find_files()`              | 查找文件                                             | fff           |
+| `<D-N>`   | 普通      | `fff.find_files({ignore={}})`   | 查找所有文件 (包括隐藏)                              | fff           |
 | `<D-Esc>` | 普通/终端 | `:FloatermToggle`               | 切换终端显示                                         | floaterm      |
-
 
 ### 编码
 
-| 快捷键      | 模式       | 命令              | 说明             | 来源         |
-| ----------- | ---------- | ----------------- | ---------------- | ------------ |
-| `gcc`       | 普通       | 切换注释当前行    | 注释/取消注释    | 内置 (ts-comments) |
-| `gc` + 运动 | 普通       | 切换注释运动范围  | 如 `gcip` 注释段落 | 内置 (ts-comments) |
+| 快捷键      | 模式 | 命令             | 说明               | 来源               |
+| ----------- | ---- | ---------------- | ------------------ | ------------------ |
+| `gcc`       | 普通 | 切换注释当前行   | 注释/取消注释      | 内置 (ts-comments) |
+| `gc` + 运动 | 普通 | 切换注释运动范围 | 如 `gcip` 注释段落 | 内置 (ts-comments) |
+| `<D-r>`   | 普通      | `Snacks.picker.lsp_references()`| 查找引用 (LSP)                                       | snacks        |
+| `<D-o>`   | 普通      | `<C-o>`                         | 跳回上一个位置 (跳转列表)                            | keyd 映射     |
+| `<D-i>`   | 普通      | `<C-i>`                         | 跳到下一个位置 (跳转列表)                            | keyd 映射     |
+
 ---
 
 ## 基础配置
@@ -154,9 +157,9 @@
 | 快捷键       | 模式 | 命令                                    | 说明                       | 来源   |
 | ------------ | ---- | --------------------------------------- | -------------------------- | ------ |
 | `<leader>ff` | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
-| `<D-r>`      | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
+| `<D-n>`      | 普通 | `fff.find_files()`                      | 查找文件                   | fff    |
 | `<leader>fF` | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
-| `<D-R>`      | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
+| `<D-N>`      | 普通 | `fff.find_files({ignore={}})`           | 查找所有文件 (包括隐藏)    | fff    |
 | `<leader>fg` | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
 | `<D-g>`      | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
 | `<leader>/`  | 普通 | `fff.live_grep()`                       | 实时搜索 (grep)            | fff    |
@@ -250,6 +253,8 @@
 
 | 快捷键       | 模式 | 命令                                                | 说明                    | 来源         |
 | ------------ | ---- | --------------------------------------------------- | ----------------------- | ------------ |
+| `gd`         | 普通 | `vim.lsp.buf.definition`                            | 转到定义 (缓冲区级别)   | lsp (内置)   |
+| `grr`        | 普通 | `Snacks.picker.lsp_references`                      | 查找引用 (缓冲区级别)   | snacks       |
 | `<leader>rn` | 普通 | `:LspUI rename`                                     | 重命名符号              | lsp-ui       |
 | `<leader>ca` | 普通 | `:LspUI code_action`                                | 代码操作                | lsp-ui       |
 | `K`          | 普通 | `ufo.peekFoldedLinesUnderCursor()` / `:LspUI hover` | 悬停信息 / 查看折叠     | lsp-ui / ufo |
