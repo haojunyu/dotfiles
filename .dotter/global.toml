@@ -14,7 +14,7 @@ npmrc = { target = "~/.npmrc", type = "symbolic" }
 "config_yazi.toml" = { target = "~/.config/yazi/yazi.toml", type = "symbolic" }
 "config_yazi_init.lua" = { target = "~/.config/yazi/init.lua", type = "symbolic" }
 "config_pip.conf" = { target = "~/.config/pip/pip.conf", type = "symbolic", if = "dotter.linux" }
-nvim = "~/.config/nvim"
+nvim = { target = "~/.config/nvim", type = "symbolic", exclude = ["*.md"]}
 
 [shell.variables]
 GFW_HOST = ""
