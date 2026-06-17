@@ -6,7 +6,7 @@ After=network-online.target
 Wants=network-online.target
 [Service]
 Type=simple
-User=hjy
+User={{ HOME_USER }}
 ExecStart=ssh -C -N -g -T -D 127.0.0.1:55558 bwg
 Restart=on-failure
 RestartSec=3

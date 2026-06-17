@@ -17,6 +17,7 @@ npmrc = { target = "~/.npmrc", type = "symbolic" }
 nvim = { target = "~/.config/nvim", type = "symbolic", exclude = ["*.md"]}
 
 [shell.variables]
+HOME_USER = ""   # must
 GFW_HOST = ""
 GFW_PORT = ""
 ALI_HOST = ""

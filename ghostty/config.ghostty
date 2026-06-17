@@ -11,7 +11,6 @@ keybind = super+d=new_split:right
 keybind = super+shift+d=new_split:down
 keybind = super+[=goto_split:previous
 keybind = super+]=goto_split:next
-keybind = super+`=goto_split:next
 keybind = super+k=clear_screen
 keybind = super+page_up=scroll_page_up
 keybind = super+page_down=scroll_page_down

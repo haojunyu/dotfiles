@@ -8,6 +8,7 @@ if status is-interactive
     abbr lg lazygit
     abbr cat bat
     abbr ls "lsd --long"
+    abbr lt "lsd --long --tree --depth 1"
     abbr delta "delta --side-by-side"
     abbr du "dust --reverse"
     abbr time "hyperfine"
