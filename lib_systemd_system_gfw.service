@@ -1,0 +1,14 @@
+# gfw service
+[Unit]
+Description=gfw
+#After=network.target
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+User=hjy
+ExecStart=ssh -C -N -g -T -D 127.0.0.1:55558 bwg
+Restart=on-failure
+RestartSec=3
+[Install]
+WantedBy=multi-user.target
