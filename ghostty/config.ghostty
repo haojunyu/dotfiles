@@ -6,11 +6,14 @@ theme = Catppuccin Frappe
 ## keybind
 keybind = performable:ctrl+c=copy_to_clipboard
 keybind = ctrl+v=paste_from_clipboard
-keybind = super+t=new_tab
+keybind = ctrl+t=new_tab
+keybind = ctrl+w=close_tab:this
 keybind = super+d=new_split:right
 keybind = super+shift+d=new_split:down
 keybind = super+[=goto_split:previous
 keybind = super+]=goto_split:next
 keybind = super+k=clear_screen
-keybind = super+page_up=scroll_page_up
-keybind = super+page_down=scroll_page_down
+# 避免和nvim中翻页冲突
+keybind = super+ctrl+b=scroll_page_up
+keybind = super+ctrl+f=scroll_page_down
+keybind = super+ctrl+`=goto_split:next
