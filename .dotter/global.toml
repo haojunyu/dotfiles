@@ -14,6 +14,7 @@ npmrc = { target = "~/.npmrc", type = "symbolic" }
 "config_yazi.toml" = { target = "~/.config/yazi/yazi.toml", type = "symbolic" }
 "config_yazi_init.lua" = { target = "~/.config/yazi/init.lua", type = "symbolic" }
 "config_pip.conf" = { target = "~/.config/pip/pip.conf", type = "symbolic", if = "dotter.linux" }
+"config_uv_uv.toml" = { target = "~/.config/uv/uv.toml", type = "symbolic" }
 nvim = { target = "~/.config/nvim", type = "symbolic", exclude = ["*.md"]}
 
 [shell.variables]
