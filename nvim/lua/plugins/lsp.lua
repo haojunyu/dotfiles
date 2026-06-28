@@ -70,24 +70,39 @@ return
 						return true
 					end
 
-					-- 设置诊断信息
-					vim.diagnostic.config({
-						virtual_text = {
-							spacing = 4,
-							-- prefix = '⭕'
-						},
-						float = { severity_sort = true },
-						severity_sort = true,
-						signs = {
-							text = {
-								--     [vim.diagnostic.severity.ERROR] = 'E:',
-								--     [vim.diagnostic.severity.WARN] = 'W:',
-								--     [vim.diagnostic.severity.INFO] = 'I:',
-								--     [vim.diagnostic.severity.HINT] = 'H:',
+					-- 设置诊断信息（以下文件类型关闭诊断）
+					local disabled_diag_ft = {
+						markdown = true,
+						txt = true,
+						gitcommit = true,
+						-- 后续追加：例如 "txt", "gitcommit" 等
+					}
+					local ft = vim.bo[event.buf].filetype
+					if disabled_diag_ft[ft] then
+						vim.diagnostic.config({
+							virtual_text = false,
+							underline = false,
+							signs = false,
+						}, event.buf)
+					else
+						vim.diagnostic.config({
+							virtual_text = {
+								spacing = 4,
+								-- prefix = '⭕'
 							},
-						},
-						underline = true,
-					})
+							float = { severity_sort = true },
+							severity_sort = true,
+							signs = {
+								text = {
+									--     [vim.diagnostic.severity.ERROR] = 'E:',
+									--     [vim.diagnostic.severity.WARN] = 'W:',
+									--     [vim.diagnostic.severity.INFO] = 'I:',
+									--     [vim.diagnostic.severity.HINT] = 'H:',
+								},
+							},
+							underline = true,
+						}, event.buf)
+					end
 
 					-- 设置快捷键
 					vim.keymap.set("n", "gd", function()
