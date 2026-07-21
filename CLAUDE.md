@@ -13,6 +13,10 @@ Dotter deploys dotfiles from this repo to their target locations (typically `~`)
 - **`.dotter/global.toml`** — Defines packages (groups of files) with their source→target mappings, variables, and helper scripts. Packages can declare dependencies on other packages.
 - **`.dotter/local.toml`** — Machine-specific config. Selects which packages to enable, and can override files/variables for the local machine. If `local.toml` is missing, Dotter looks for `<hostname>.toml` instead.
 
+## Tooling: committed binary vs. source
+
+Everyday deploys use the **committed prebuilt binary** `./dotter` (alongside `dotter.arm` and `dotter.exe` for other arches/OSes). Do not rebuild from source for normal work — the `cargo` commands in the *Dotter Source* section below are only for hacking on Dotter itself in the sibling repo, then copying the new binary over `./dotter`.
+
 ## Common Commands
 
 ```bash
@@ -42,7 +46,22 @@ Dotter deploys dotfiles from this repo to their target locations (typically `~`)
   - **Automatic** (bare string): Dotter auto-detects whether to symlink or template based on file content.
   - **Symbolic** (`type = "symbolic"`): Always symlinked.
   - **Template** (`type = "template"`): Rendered via Handlebars with variable substitution.
-- **Conditions**: Files can have an `if` field with a Handlebars expression — the file is only deployed when the condition is true.
+- **`exclude`**: A file entry can list glob patterns to skip when the source is a directory (e.g. `nvim = { target = "~/.config/nvim", type = "symbolic", exclude = ["*.md"] }`).
+- **Conditions**: Files can have an `if` field with a Handlebars expression — the file is only deployed when the condition is true (e.g. `if = "dotter.linux"`).
+
+## Packages
+
+Packages are defined in `global.toml`. The current graph:
+
+- **`shell`** — base package. Deploys the dotter binaries themselves, SSH config, gitconfig, and tool configs (starship, yazi, pip, uv, npm, cargo). Declares the variable placeholders (`HOME_USER`, `GFW_*`/`ALI_*`/`TX_*`/`RASP_*`/`NAS_*`/`WS_*` host+port pairs, `GIT_NAME`, `GIT_EMAIL`).
+- **`fish`**, **`ghostty`** — each `depends = ["shell"]`; symlink their config dirs into `~/.config/`.
+- **`keyd`** — `depends = ["shell"]`, `if = "dotter.linux"`, targets the **system path** `/etc/keyd/default.conf` (needs privileges to deploy).
+
+Enabled packages are selected in `local.toml` (`packages = [...]`). `[settings]` sets `default_target_type = "automatic"`.
+
+## `local.toml` and the new-machine workflow
+
+`local.toml` is **gitignored** (see `.gitignore`, along with `.dotter/cache*`). It holds machine-specific values: the package selection plus the real values for every variable declared as an empty placeholder in `global.toml`. On a new machine, create `.dotter/local.toml` (or `.dotter/<hostname>.toml`) and fill in `HOME_USER`, the host/port pairs, and `GIT_NAME`/`GIT_EMAIL` before deploying.
 - **`dotter` built-in variables** available in templates: `dotter.os`, `dotter.hostname`, `dotter.packages.<name>`, `dotter.files.<source>`, `dotter.unix`, `dotter.windows`, `dotter.linux`, `dotter.macos`, `dotter.current_dir`.
 - **Custom Handlebars helpers**: `math`, `include_template`, `is_executable`, `command_success`, `command_output`.
 

@@ -39,7 +39,7 @@ return
             { "<leader>a", nil, desc = "AI/Claude Code" },
 
             -- Window control
-            { "<D-2>", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude", mode = { "n", "t" } },
+            { "<D-2>", "<cmd>ClaudeCode --dangerously-skip-permissions<cr>", desc = "Toggle Claude with bypass mode", mode = { "n", "t" } },
             { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude", mode = { "n" } },
             { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
 

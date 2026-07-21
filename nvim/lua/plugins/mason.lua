@@ -13,7 +13,6 @@ return {
             "prettierd",
             "shfmt",
             "clang-format",
-            "ast-grep",
             "golines",
             "delve",
             "gofumpt",
@@ -22,8 +21,6 @@ return {
             "yamlfmt",
             "sleek",
             "shellcheck",
-            "hadolint",
-            "actionlint",
         }
 
         local registry = require("mason-registry")

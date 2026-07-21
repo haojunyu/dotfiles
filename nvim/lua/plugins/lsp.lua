@@ -1,9 +1,6 @@
 local ensure_installed = {
 	"gopls",
-	"basedpyright",
-	"vtsls",
 	"lua_ls",
-	"buf_ls",
 	"dockerls",
 	"protols",
 	"clangd",
@@ -12,8 +9,6 @@ local ensure_installed = {
 	"rust_analyzer",
 	"yamlls",
 	"markdown_oxide",
-	"zls",
-	"typos_lsp",
 }
 
 return
