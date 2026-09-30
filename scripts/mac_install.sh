@@ -2,29 +2,33 @@
 set -euo pipefail
 
 # ============================================================
-# Ubuntu 26.04 Dev Environment Setup
+# macOS Dev Environment Setup
 # ============================================================
 # Usage:
-#   ./install.sh              - Show this help message
-#   ./install.sh all          - Run all install steps
-#   ./install.sh <command...> - Run specific install step(s)
+#   ./mac_install.sh              - Show this help message
+#   ./mac_install.sh all          - Run all install steps
+#   ./mac_install.sh <command...> - Run specific install step(s)
 #
 # Available commands:
-#   fish      Install Fish shell (includes apt mirror setup)
+#   brew      Install Xcode CLI tools and Homebrew (TUNA mirrors)
+#   fish      Install Fish shell
 #   rust      Install Rust toolchain with Chinese mirrors
 #   utils     Install TUI tools (git, fzf, starship, atuin, lsd, bat, zoxide, zellij, etc.)
 #   env       Install Node.js (fnm) and Python (uv) toolchains
-#   input     Install fcitx5 Chinese input method
 # ============================================================
 
-# ── 0. 前置: xcode命令行工具和brew ──────────────────────────────────
-switch_mirror() {
-    echo "==> Switching to Aliyun mirror for apt sources..."
-    xcode-select --install
+# ── 0. 前置: Xcode 命令行工具和 Homebrew ────────────────────────────
+setup_brew() {
+    echo "==> Installing Xcode CLI tools and Homebrew (TUNA mirrors)..."
+    xcode-select --install || true
     export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
     export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
     export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    if ! command -v brew &> /dev/null; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
+    # Apple Silicon: /opt/homebrew, Intel: /usr/local
+    eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || brew shellenv)"
     echo "    Done."
 }
 
@@ -32,10 +36,12 @@ switch_mirror() {
 install_fish() {
     echo "==> [fish] Installing Fish shell..."
     brew install fish
-    if ! grep -q "$(which fish)" /etc/shells; then
-        sudo sh -c "echo $(which fish) >> /etc/shells"
+    local fish_path
+    fish_path="$(brew --prefix)/bin/fish"
+    if ! grep -q "$fish_path" /etc/shells; then
+        sudo sh -c "echo $fish_path >> /etc/shells"
     fi
-    chsh -s "$(which fish)"
+    chsh -s "$fish_path"
     echo "    Fish installed. Logout and login to take effect."
 }
 
@@ -66,21 +72,15 @@ CARGO_EOF
 
 # ── 3. Utils (TUI tools + git + system utils) ────────────────
 install_utils() {
-    echo "==> [utils] Installing utility tools..."
-    sudo apt install -y git lazygit fzf ffmpeg jq resvg imagemagick libclang-dev gh
-
-    mkdir -p ~/.config/fish/completions
-    fdfind --gen-completions fish > ~/.config/fish/completions/fd.fish 2>/dev/null || true
-
-    echo "    APT utils installed. Installing Rust-based tools via cargo..."
-    export PATH="$HOME/.cargo/bin:$PATH"
+    echo "==> [utils] Installing utility tools via brew..."
+    brew install git lazygit fzf ffmpeg jq resvg imagemagick gh
 
     cargo install starship
     mkdir -p ~/.config/fish/conf.d
     echo '"$HOME/.cargo/bin/starship init fish | source"' > ~/.config/fish/conf.d/starship.fish
-    starship preset catppuccin-powerline -o ~/.config/starship.toml
+    starship preset catppuccin-powerline -f -o ~/.config/starship.toml
 
-    cargo install atuin
+    cargo install --locked atuin
 
     cargo install tlrc
     fish -c "set -Ux TLDR_LANGUAGE zh"
@@ -97,17 +97,23 @@ install_utils() {
     cargo install zellij
     cargo install tree-sitter-cli
 
-    # 尝试用snap安装yazi, nvim(0.12)
-    sudo snap install yazi --classic
-    sudo snap install nvim --classic
+    mkdir -p ~/.config/fish/completions
+    fd --gen-completions fish > ~/.config/fish/completions/fd.fish 2>/dev/null || true
 
-    echo "    All cargo utils installed."
+    # yazi, nvim(0.12) via brew
+    brew install yazi neovim
+
+    echo "    All utils installed."
 }
 
 # ── 4. Env (Node.js / Python via cargo tools) ───────────────
 install_env() {
     echo "==> [env] Installing Node.js and Python toolchains..."
     export PATH="$HOME/.cargo/bin:$PATH"
+
+    cargo install fnm
+    fish -c "fnm install --lts"
+    npm config set registry https://registry.npmmirror.com
 
     cargo install uv
     fish -c "set -Ux UV_INDEX_URL https://mirrors.aliyun.com/pypi/simple"
@@ -118,23 +124,23 @@ install_env() {
 # ── Help ─────────────────────────────────────────────────────
 show_help() {
     cat << 'EOF'
-Ubuntu 26.04 Dev Environment Setup
+macOS Dev Environment Setup
 
 Usage:
-  ./install.sh              Show this help message
-  ./install.sh all          Run all install steps
-  ./install.sh <command...> Run specific install step(s)
+  ./mac_install.sh              Show this help message
+  ./mac_install.sh all          Run all install steps
+  ./mac_install.sh <command...> Run specific install step(s)
 
 Available commands:
-  fish      Install Fish shell (includes apt mirror setup)
+  brew      Install Xcode CLI tools and Homebrew (TUNA mirrors)
+  fish      Install Fish shell
   rust      Install Rust toolchain with Chinese mirrors
   utils     Install TUI tools (git, fzf, starship, atuin, lsd, bat, zoxide, zellij, etc.)
   env       Install Node.js (fnm) and Python (uv) toolchains
-  input     Install fcitx5 Chinese input method
 
 Examples:
-  ./install.sh fish         # Install Fish shell only
-  ./install.sh rust utils   # Install Rust + utils
+  ./mac_install.sh fish         # Install Fish shell only
+  ./mac_install.sh rust utils   # Install Rust + utils
 EOF
 }
 
@@ -142,11 +148,11 @@ EOF
 run_all() {
     echo ""
     echo "╔══════════════════════════════════════════════════════╗"
-    echo "║  Ubuntu 26.04 Dev Environment Setup                  ║"
+    echo "║  macOS Dev Environment Setup                         ║"
     echo "║  Running all install steps...                        ║"
     echo "╚══════════════════════════════════════════════════════╝"
     echo ""
-    switch_mirror
+    setup_brew
     install_fish
     install_rust
     install_utils
@@ -154,7 +160,7 @@ run_all() {
     echo ""
     echo "╔══════════════════════════════════════════════════════╗"
     echo "║  Done!                                               ║"
-    echo "║  Remember to re-login for fish / fcitx5 to take effect. ║"
+    echo "║  Remember to re-login for fish to take effect.       ║"
     echo "╚══════════════════════════════════════════════════════╝"
 }
 
@@ -167,23 +173,24 @@ else
     echo "╚══════════════════════════════════════════════════════╝"
     echo ""
 
-    # Run switch_mirror once if any selected command needs apt
+    # Run setup_brew once if any selected command needs brew
     for arg in "$@"; do
         case "$arg" in
-            fish|utils|input) switch_mirror; break ;;
+            fish|utils) setup_brew; break ;;
         esac
     done
 
     for arg in "$@"; do
         case "$arg" in
             all)   run_all ;;
+            brew)  setup_brew ;;
             fish)  install_fish ;;
             rust)  install_rust ;;
             utils) install_utils ;;
             env)   install_env ;;
             *)
                 echo "  Unknown command: $arg"
-                echo "  Run './install.sh help' for available commands."
+                echo "  Run './mac_install.sh help' for available commands."
                 exit 1
                 ;;
         esac
