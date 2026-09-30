@@ -91,6 +91,7 @@ CARGO_EOF
 # ── 3. Utils (TUI tools + git + system utils) ────────────────
 install_utils() {
     echo "==> [utils] Installing utility tools via brew..."
+    brew install font-cousine-nerd-font font-hack-nerd-font
     brew install git lazygit fzf ffmpeg jq resvg imagemagick gh
 
     # starship.toml / fish conf.d & completions are deployed by dotter.
