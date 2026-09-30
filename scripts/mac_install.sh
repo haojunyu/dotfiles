@@ -4,6 +4,10 @@ set -euo pipefail
 # ============================================================
 # macOS Dev Environment Setup
 # ============================================================
+# This script ONLY installs software. All dotfile/config setup
+# (cargo mirrors, starship, fish, npmrc, uv, ...) is handled by
+# dotter: create .dotter/local.toml, then run ./dotter deploy.
+#
 # Usage:
 #   ./mac_install.sh              - Show this help message
 #   ./mac_install.sh all          - Run all install steps
@@ -11,7 +15,8 @@ set -euo pipefail
 #
 # Available commands:
 #   brew      Install Xcode CLI tools and Homebrew (TUNA mirrors)
-#   fish      Install Fish shell
+#   zsh       Install Zsh shell and set it as default
+#   fish      Install Fish shell and set it as default
 #   rust      Install Rust toolchain with Chinese mirrors
 #   utils     Install TUI tools (git, fzf, starship, atuin, lsd, bat, zoxide, zellij, etc.)
 #   env       Install Node.js (fnm) and Python (uv) toolchains
@@ -32,7 +37,20 @@ setup_brew() {
     echo "    Done."
 }
 
-# ── 1. Fish Shell ────────────────────────────────────────────
+# ── 1a. Zsh Shell ────────────────────────────────────────────
+install_zsh() {
+    echo "==> [zsh] Installing Zsh shell..."
+    brew install zsh
+    local zsh_path
+    zsh_path="$(brew --prefix)/bin/zsh"
+    if ! grep -q "$zsh_path" /etc/shells; then
+        sudo sh -c "echo $zsh_path >> /etc/shells"
+    fi
+    chsh -s "$zsh_path"
+    echo "    Zsh installed. Logout and login to take effect."
+}
+
+# ── 1b. Fish Shell ───────────────────────────────────────────
 install_fish() {
     echo "==> [fish] Installing Fish shell..."
     brew install fish
@@ -75,16 +93,10 @@ install_utils() {
     echo "==> [utils] Installing utility tools via brew..."
     brew install git lazygit fzf ffmpeg jq resvg imagemagick gh
 
+    # starship.toml / fish conf.d & completions are deployed by dotter.
     cargo install starship
-    mkdir -p ~/.config/fish/conf.d
-    echo '"$HOME/.cargo/bin/starship init fish | source"' > ~/.config/fish/conf.d/starship.fish
-    starship preset catppuccin-powerline -f -o ~/.config/starship.toml
-
     cargo install --locked atuin
-
     cargo install tlrc
-    fish -c "set -Ux TLDR_LANGUAGE zh"
-
     cargo install lsd               # ls
     cargo install zoxide            # cd
     cargo install bat               # cat
@@ -97,9 +109,6 @@ install_utils() {
     cargo install zellij
     cargo install tree-sitter-cli
 
-    mkdir -p ~/.config/fish/completions
-    fd --gen-completions fish > ~/.config/fish/completions/fd.fish 2>/dev/null || true
-
     # yazi, nvim(0.12) via brew
     brew install yazi neovim
 
@@ -111,12 +120,12 @@ install_env() {
     echo "==> [env] Installing Node.js and Python toolchains..."
     export PATH="$HOME/.cargo/bin:$PATH"
 
-    cargo install fnm
-    fish -c "fnm install --lts"
+    # 在 mac 中使用 brew 进行 node 的安装和管理，而不用 fnm
+    brew install node
     npm config set registry https://registry.npmmirror.com
 
     cargo install uv
-    fish -c "set -Ux UV_INDEX_URL https://mirrors.aliyun.com/pypi/simple"
+    uv pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 
     echo "    Env toolchains installed."
 }
@@ -126,14 +135,18 @@ show_help() {
     cat << 'EOF'
 macOS Dev Environment Setup
 
+This script ONLY installs software. Dotfile/config deployment is
+handled by dotter (see the reminder printed at the end).
+
 Usage:
   ./mac_install.sh              Show this help message
-  ./mac_install.sh all          Run all install steps
+  ./mac_install.sh all          Run all install steps (default shell: zsh)
   ./mac_install.sh <command...> Run specific install step(s)
 
 Available commands:
   brew      Install Xcode CLI tools and Homebrew (TUNA mirrors)
-  fish      Install Fish shell
+  zsh       Install Zsh shell and set it as default
+  fish      Install Fish shell and set it as default
   rust      Install Rust toolchain with Chinese mirrors
   utils     Install TUI tools (git, fzf, starship, atuin, lsd, bat, zoxide, zellij, etc.)
   env       Install Node.js (fnm) and Python (uv) toolchains
@@ -145,6 +158,18 @@ EOF
 }
 
 # ── Main ─────────────────────────────────────────────────────
+show_dotter_reminder() {
+    echo ""
+    echo "╔══════════════════════════════════════════════════════╗"
+    echo "║  Software installed. Next: deploy dotfiles via       ║"
+    echo "║  dotter from the repo root:                          ║"
+    echo "║                                                      ║"
+    echo "║    1. Create .dotter/local.toml and fill in          ║"
+    echo "║       HOME_USER, host/port pairs, GIT_NAME/EMAIL     ║"
+    echo "║    2. ./dotter deploy                                ║"
+    echo "╚══════════════════════════════════════════════════════╝"
+}
+
 run_all() {
     echo ""
     echo "╔══════════════════════════════════════════════════════╗"
@@ -153,15 +178,16 @@ run_all() {
     echo "╚══════════════════════════════════════════════════════╝"
     echo ""
     setup_brew
-    install_fish
+    install_zsh
     install_rust
     install_utils
     install_env
     echo ""
     echo "╔══════════════════════════════════════════════════════╗"
     echo "║  Done!                                               ║"
-    echo "║  Remember to re-login for fish to take effect.       ║"
+    echo "║  Remember to re-login for zsh to take effect.        ║"
     echo "╚══════════════════════════════════════════════════════╝"
+    show_dotter_reminder
 }
 
 if [ $# -eq 0 ] || [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
@@ -176,7 +202,7 @@ else
     # Run setup_brew once if any selected command needs brew
     for arg in "$@"; do
         case "$arg" in
-            fish|utils) setup_brew; break ;;
+            zsh|fish|utils) setup_brew; break ;;
         esac
     done
 
@@ -184,6 +210,7 @@ else
         case "$arg" in
             all)   run_all ;;
             brew)  setup_brew ;;
+            zsh)   install_zsh ;;
             fish)  install_fish ;;
             rust)  install_rust ;;
             utils) install_utils ;;
@@ -200,4 +227,5 @@ else
     echo "╔══════════════════════════════════════════════════════╗"
     echo "║  Done!                                               ║"
     echo "╚══════════════════════════════════════════════════════╝"
+    show_dotter_reminder
 fi
