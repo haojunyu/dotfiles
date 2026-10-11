@@ -105,13 +105,13 @@ install_utils() {
     cargo install fd-find           # find  -> fd
     cargo install git-delta         # diff  -> delta
     cargo install hyperfine         # time
-    cargo install dust-du           # du -> dust
+    cargo install du-dust           # du -> dust
     cargo install sd                # sed
     cargo install zellij
     cargo install tree-sitter-cli
 
     # yazi, nvim(0.12) via brew
-    brew install yazi neovim
+    brew install yazi neovim ghostty
 
     echo "    All utils installed."
 }
@@ -123,11 +123,12 @@ install_env() {
 
     # 在 mac 中使用 brew 进行 node 的安装和管理，而不用 fnm
     brew install node
-    npm config set registry https://registry.npmmirror.com
+    # export npm_config_registry=https://registry.npmmirror.com
 
     cargo install uv
-    uv pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+    # export UV_DEFAULT_INDEX=https://mirrors.aliyun.com/pypi/simple
 
+    # npm registry / uv index 镜像由 dotter 部署(~/.npmrc、~/.config/uv/uv.toml)
     echo "    Env toolchains installed."
 }
 

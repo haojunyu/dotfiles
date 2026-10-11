@@ -46,7 +46,7 @@ depends = ["shell"]
 depends = ["shell"]
 
 [ghostty.files]
-"ghostty" = { target = "~/.config/ghostty", type = "symbolic" }
+"ghostty" = { target = "~/.config/ghostty", type = "symbolic", if = "dotter.linux"}
 
 
 [keyd]
