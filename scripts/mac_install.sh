@@ -169,6 +169,7 @@ show_dotter_reminder() {
     echo "║    1. Create .dotter/local.toml and fill in          ║"
     echo "║       HOME_USER, host/port pairs, GIT_NAME/EMAIL     ║"
     echo "║    2. ./dotter deploy                                ║"
+    echo "║    3. suggest configure node_exporter, gfw, privoxy  ║"
     echo "╚══════════════════════════════════════════════════════╝"
 }
 

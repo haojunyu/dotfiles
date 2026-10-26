@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.hjy.proxyer</string>
+
+	<!-- 以登录用户身份运行，才能读到 ~/.ssh/config 和私钥 -->
+	<key>UserName</key>
+	<string>{{ HOME_USER }}</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>/usr/bin/ssh</string>
+		<string>-C</string>
+		<string>-N</string>
+		<string>-g</string>
+		<string>-T</string>
+		<string>-D</string>
+		<string>127.0.0.1:55558</string>
+		<string>gfw</string>
+	</array>
+
+	<!-- launchd daemon 默认不设置 HOME，必须显式指定，否则 ssh 找不到 ~/.ssh -->
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>HOME</key>
+		<string>/Users/{{ HOME_USER }}</string>
+		<key>PATH</key>
+		<string>/usr/bin:/bin:/usr/sbin:/sbin</string>
+	</dict>
+
+	<!-- 开机自启 + 断线自动重连（等价于 systemd 的 Restart=on-failure） -->
+	<key>RunAtLoad</key>
+	<true/>
+	<key>KeepAlive</key>
+	<true/>
+	<key>ThrottleInterval</key>
+	<integer>10</integer>
+
+	<key>StandardOutPath</key>
+	<string>/Users/{{ HOME_USER }}/Library/Logs/proxyer.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/{{ HOME_USER }}/Library/Logs/proxyer.err.log</string>
+
+	<key>ProcessType</key>
+	<string>Background</string>
+</dict>
+</plist>

@@ -56,5 +56,12 @@ depends = ["shell"]
 "keyd.conf" = { target = "/etc/keyd/default.conf", type = "template", if = "dotter.linux" }
 
 
+[proxyer]
+depends = ["shell"]
+
+[proxyer.files]
+"Library_LaunchDaemons_com.hjy.proxyer.plist" = { target = "/Library/LaunchDaemons/com.hjy.proxyer.plist", type = "template", if = "dotter.macos" }
+
+
 [settings]
 default_target_type = "automatic"

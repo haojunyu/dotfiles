@@ -70,6 +70,17 @@ Host ws
     RequestTTY yes
 {{/if}}
 
+{{#if (and GFW_HOST GFW_PORT)}}
+# GitHub 走本地 SOCKS5 隧道（由 ssh -D 127.0.0.1:55558 bwg 提供）
+# 使用 macOS 自带的 nc，避免依赖容易缺失的 connect 二进制
+Host github.com
+    HostName  ssh.github.com
+    Port      22
+    User      git
+    IdentityFile ~/.ssh/id_ed25519
+    ProxyCommand /usr/bin/nc -X 5 -x 127.0.0.1:55558 %h %p
+{{/if}}
+
 
 # 跳板机配置样例
 #Host jumper
