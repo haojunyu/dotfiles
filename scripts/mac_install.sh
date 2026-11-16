@@ -94,7 +94,7 @@ CARGO_EOF
 install_utils() {
     echo "==> [utils] Installing utility tools via brew..."
     brew install font-cousine-nerd-font font-hack-nerd-font
-    brew install git lazygit fzf ffmpeg jq resvg imagemagick gh
+    brew install git lazygit fzf ffmpeg jq resvg imagemagick gh fastfetch
 
     # starship.toml / fish conf.d & completions are deployed by dotter.
     cargo install starship
@@ -234,3 +234,10 @@ else
     echo "╚══════════════════════════════════════════════════════╝"
     show_dotter_reminder
 fi
+
+
+
+
+### 加载到 system 域（RunAtLoad=true，bootstrap 即启动）
+##sudo launchctl bootstrap system /Library/LaunchDaemons/com.hjy.proxyer.plist
+##sudo launchctl kickstart -k system/com.hjy.proxyer

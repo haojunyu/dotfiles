@@ -42,6 +42,13 @@ depends = ["shell"]
 "fish" = { target = "~/.config/fish", type = "symbolic" }
 
 
+[zsh]
+depends = ["shell"]
+
+[zsh.files]
+"zshrc" = { target = "~/.zshrc", type = "symbolic" }
+
+
 [ghostty]
 depends = ["shell"]
 
@@ -56,12 +63,12 @@ depends = ["shell"]
 "keyd.conf" = { target = "/etc/keyd/default.conf", type = "template", if = "dotter.linux" }
 
 
-[proxyer]
-depends = ["shell"]
-
-[proxyer.files]
-"Library_LaunchDaemons_com.hjy.proxyer.plist" = { target = "/Library/LaunchDaemons/com.hjy.proxyer.plist", type = "template", if = "dotter.macos" }
-
+# [proxyer]
+# depends = ["shell"]
+#
+# [proxyer.files]
+# "Library_LaunchDaemons_com.hjy.proxyer.plist" = { target = "/Library/LaunchDaemons/com.hjy.proxyer.plist", type = "template", if = "dotter.macos" }
+      # 强制立刻拉起一次
 
 [settings]
 default_target_type = "automatic"
